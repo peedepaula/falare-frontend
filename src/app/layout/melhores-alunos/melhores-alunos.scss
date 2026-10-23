@@ -1,0 +1,43 @@
+@use '../../../variaveis' as v;
+
+.melhores-alunos-corpo{
+    width: 100%;
+    height: auto;
+    background-color: v.$cor-tema;
+
+    padding: 22px 24px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .titulo-padrao{
+        font-size: 10px;
+        font-weight: 500;
+        color: v.$cor-tema;
+        background-color: v.$cor-fundo-branco;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 10px 0 10px 0;
+        padding: 8px 12px;
+        border: solid 1px v.$cor-tema;
+    }
+
+    .lista-alunos{
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        margin-top: 22px;
+    }
+
+    .aluno-fundo{
+        width: 100%;
+        height: 60px;
+        background-color: v.$cor-fundo-branco;
+        border-radius: 10px;
+    }
+}

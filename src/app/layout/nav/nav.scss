@@ -1,0 +1,100 @@
+@use '../../../variaveis' as v;
+
+.corpo-nav{
+    width: 100%;
+    height: 100%;
+    background-color: v.$cor-tema;
+    border-radius: 10px;
+    flex-shrink: 0;
+    padding: 32px 22px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.lista-nav{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow-y: auto;
+
+    .link-nav{
+        color: white;
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        transition: all ease 0.4s;
+        
+        &.ativo{
+            background-color: white;
+            color: v.$cor-tema;
+            border-radius: 10px;
+    
+        }
+    }
+
+
+    .link-nav:hover{
+        background-color: white;
+        color: v.$cor-tema;
+        border-radius: 10px;
+
+    }
+
+    .border{
+        border-bottom: solid 1px #d9d7d73e;
+    }
+
+    .link-nav-icone{
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.usuario-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+
+    .img-usuario{
+        background-color: white;
+        border-radius: 100px;
+        width: 45px;
+        height: 45px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icon-pessoa{
+            width: 16px;
+            height: 16px;
+            color: #0d0d0d32;
+        }
+    }
+
+    .informacoes{
+        display: flex;
+        flex-direction: column;
+
+        .nome{
+            font-size: 12px;
+            font-weight: 450;
+            color: white;
+        }
+
+        .email{
+            font-size: 8px;
+            font-weight: 350;
+            color: white;
+            opacity: 0.8;
+        }
+    }
+}

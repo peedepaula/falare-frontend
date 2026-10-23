@@ -1,0 +1,73 @@
+@use '../../../variaveis' as v;
+
+.corpo-header{
+    width: 100%;
+    height: 70px;
+    background-color: v.$cor-tema;
+
+    border-radius: 10px 10px 10px 10px;
+    box-sizing: border-box;
+    padding: 0 32px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+
+
+    .logo{
+        font-size: 18px;
+        color: white;
+    }
+
+    .menu-icon{
+        height: 25px;
+        width: 25px;
+        color: white;
+        background: none;
+        cursor: pointer;
+        border: none;
+        margin-left: auto;
+    }
+
+    .menu-header{
+        position: fixed;
+        top: 90px;
+        right: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        background-color: v.$cor-fundo-branco;
+        width: 250px;
+        height: auto;
+        border-radius: 10px;
+        padding: 32px 22px;
+        box-sizing: border-box;
+        border: solid 1px v.$cor-tema;
+    }
+
+    .sessao-menu-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        font-size: 14px;
+        color: v.$cor-tema;
+        cursor: pointer;
+        transition: all ease 0.4s;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
+    .sessao-menu-header:hover{
+        background-color: v.$cor-fundo-offwhite;
+    }
+
+    .icone-menu-header{
+        width: 18px;
+        height: 18px;
+        margin-left: auto;
+    }
+}
