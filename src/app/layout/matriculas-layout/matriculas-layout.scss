@@ -1,0 +1,56 @@
+@use '../../../variaveis' as v;
+
+.matriculas-layout-corpo{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: v.$cor-tema;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    padding: 22px 24px;
+    box-sizing: border-box;
+
+    .header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 100%;
+        position: relative;
+    }
+
+    .pesquisa-input{
+        width: 350px;
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .icone-filtro{
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        color: white;
+        position: absolute;
+        right: 0;
+    }
+
+    .matriculas{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        
+        .matricula{
+            width: 100%;
+            height: 90px;
+            border-radius: 10px;
+            background-color: white;
+            flex-shrink: 0;
+        }
+    }
+}

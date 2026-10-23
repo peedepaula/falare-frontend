@@ -1,0 +1,71 @@
+@use '../../../variaveis' as v;
+
+.pagamentos-layout-corpo{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: v.$cor-tema;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    padding: 22px 24px;
+    box-sizing: border-box;
+    position: relative;
+
+    .titulo-padrao{
+        font-size: 10px;
+        font-weight: 500;
+        color: v.$cor-tema;
+        background-color: v.$cor-fundo-branco;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 10px 0 10px 0;
+        padding: 8px 12px;
+        border: solid 1px v.$cor-tema;
+    }
+
+    .header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 100%;
+        position: relative;
+    }
+
+    .pesquisa-input{
+        width: 350px;
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .icone-filtro{
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        color: white;
+        position: absolute;
+        right: 0;
+    }
+
+    .pagamentos{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        
+        .pagamento{
+            width: 100%;
+            height: 60px;
+            border-radius: 10px;
+            background-color: white;
+            flex-shrink: 0;
+        }
+    }
+}
