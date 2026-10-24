@@ -14,6 +14,10 @@ export const routes: Routes = [
         component: Entrar
     },
     {
+        path: "entrar-admin",
+        component: Entrar
+    },
+    {
         path: "geral",
         component: Geral
     },

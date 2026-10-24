@@ -1,0 +1,90 @@
+@use '../../../variaveis' as v;
+
+.corpo-pagamento{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: white;
+    flex-shrink: 0;
+    border: none;
+    position: relative;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: all ease 0.4s;
+
+    &:hover{
+        opacity: 0.7;
+    }
+
+    .nome-foto{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+
+        .imagem-aluno{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+            border-radius: 100px;
+            background-color: v.$cor-fundo-offwhite;
+    
+            .icon-usuario{
+                width: 14px;
+                height: 14px;
+                color: v.$cor-tema;
+            }
+        }
+
+        .dados{
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: center;
+
+            .nome-aluno{
+                font-size: 13px;
+                font-weight: 450;
+                color: v.$cor-tema;
+            }
+
+            .status{
+                padding: 3px 6px;
+                border-radius: 100px;
+                color: white;
+                background-color: green;
+                font-size: 10px;
+            }
+        }
+
+    }
+
+    .valor{
+        font-size: 14px;
+        font-weight: 600;
+        color: v.$cor-tema;
+        margin-left: auto;
+    }
+
+
+    .data{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 10px;
+        font-weight: 350;
+        color: white;
+        padding: 3px 6px;
+        background-color: v.$cor-tema;
+        border-radius: 0 9px 0 10px;
+        border: solid 1px white;
+    }
+
+}

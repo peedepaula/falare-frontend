@@ -1,0 +1,45 @@
+@use '../../../variaveis' as v;
+
+.botao-criar-corpo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+
+    .mensagem{
+        padding: 8px 16px;
+        border-radius: 100px;
+        background-color: white;
+        color: v.$cor-tema;
+        border: solid 1px v.$cor-tema;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .botao-criar{
+        width: 60px;
+        height: 60px;
+        border-radius: 100px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: solid 1px v.$cor-tema;
+        transition: all ease 0.4s;
+        cursor: pointer;
+
+        .icone-criar{
+            color: v.$cor-tema;
+            width: 14px;
+            height: 14px;
+        }
+
+        &:hover{
+            transform: scale(0.99);
+        }
+    }
+}

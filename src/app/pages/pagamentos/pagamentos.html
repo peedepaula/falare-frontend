@@ -3,11 +3,25 @@
     <app-nav class="nav"></app-nav>
     <section class="conteudo">
         <section class="cards">
-            <app-card></app-card>
-            <app-card></app-card>
-            <app-card></app-card>
+            <app-card
+            nomeCampo="Total pago"
+            dadoCampo="R$: 10.000"
+            >
+            </app-card>
+            <app-card
+            nomeCampo="Total pendente"
+            dadoCampo="R$: 10.000"
+            >
+            </app-card>
+            <app-card
+            nomeCampo="Total atrasado"
+            dadoCampo="R$: 10.000"
+            >
+            </app-card>
         </section>
         
         <app-pagamentos-layout></app-pagamentos-layout>
+
+        <app-botao-criar textoBotao="Cadastrar novo Pagamento"></app-botao-criar>
     </section>
 </main>

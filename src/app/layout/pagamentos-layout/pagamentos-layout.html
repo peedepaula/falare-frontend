@@ -8,8 +8,8 @@
     </div>
 
     <div class="pagamentos">
-        @for (item of [].constructor(12); track $index) {
-            <div class="pagamento"></div>
+        @for (item of [].constructor(60); track $index) {
+            <app-unidade-pagamento></app-unidade-pagamento>
         }
         
     </div>

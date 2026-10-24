@@ -2,7 +2,28 @@
     <app-header class="header"></app-header>
     <section class="conteudo">
         <div class="corpo-entrar">
-            
+            <h5 class="titulo-entrar">Entrar</h5>
+
+            <div class="inputs">
+                @if (isAdmin) {
+                    <div class="tipo-usuario">
+                        <button class="botao-tipo" [class.ativo]="typeUser == 'professor'" (click)="typeUser='professor'">Professor</button>
+                        <button class="botao-tipo" [class.ativo]="typeUser == 'secretaria'" (click)="typeUser='secretaria'">Secretaria</button>
+                    </div>
+                }
+
+                <div class="input-fundo">
+                    <p class="texto-input">E-mail:</p>
+                    <input type="text" name="email" class="input-real" placeholder="Digite seu E-mail...">
+                </div>
+                <div class="input-fundo">
+                    <p class="texto-input">Senha:</p>
+                    <input type="password" name="senha" class="input-real" placeholder="Digite sua Senha...">
+                    <p class="detalhe">Esqueceu a senha? <span class="pode-clicar">Clique aqui para trocar a senha.</span></p>
+                </div>
+            </div>
+
+            <button class="botao-entrar" [routerLink]="['/geral']">Entrar</button>
         </div>
     </section>
 </main>

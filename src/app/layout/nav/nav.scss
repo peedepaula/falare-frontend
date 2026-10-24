@@ -19,6 +19,7 @@
     flex-direction: column;
     gap: 18px;
     overflow-y: auto;
+    user-select: none;
 
     .link-nav{
         color: white;

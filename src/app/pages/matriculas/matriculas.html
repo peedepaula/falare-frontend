@@ -3,11 +3,25 @@
     <app-nav class="nav"></app-nav>
     <section class="conteudo">
         <section class="cards">
-            <app-card></app-card>
-            <app-card></app-card>
-            <app-card></app-card>
+            <app-card
+            nomeCampo="Total de matriculas"
+            dadoCampo="280"
+            >
+            </app-card>
+            <app-card
+            nomeCampo="Matrículas inativas"
+            dadoCampo="80"
+            >
+            </app-card>
+            <app-card
+            nomeCampo="Criadas este mês"
+            dadoCampo="10"
+            >
+            </app-card>
         </section>
         
         <app-matriculas-layout></app-matriculas-layout>
+
+        <app-botao-criar textoBotao="Cadastrar nova Matrícula"></app-botao-criar>
     </section>
 </main>

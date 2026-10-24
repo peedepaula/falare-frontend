@@ -3,11 +3,25 @@
     <app-nav class="nav"></app-nav>
     <section class="conteudo">
         <section class="cards">
-            <app-card></app-card>
-            <app-card></app-card>
-            <app-card></app-card>
+            <app-card
+            nomeCampo="Total de turmas"
+            dadoCampo="30"
+            >
+            </app-card>
+            <app-card
+            nomeCampo="Média de alunos"
+            dadoCampo="7.9"
+            >
+            </app-card>
+            <app-card
+            nomeCampo="Média de faltas"
+            dadoCampo="3.1"
+            >
+            </app-card>
         </section>
         
         <app-turmas-layout></app-turmas-layout>
+
+        <app-botao-criar textoBotao="Cadastrar nova Turma"></app-botao-criar>
     </section>
 </main>

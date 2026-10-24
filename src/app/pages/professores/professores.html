@@ -3,11 +3,25 @@
     <app-nav class="nav"></app-nav>
     <section class="conteudo">
         <section class="cards">
-            <app-card></app-card>
-            <app-card></app-card>
-            <app-card></app-card>
+            <app-card
+            nomeCampo="Total professores"
+            dadoCampo="75"
+            >
+            </app-card>
+            <app-card
+            nomeCampo="Professores inativo"
+            dadoCampo="16"
+            >
+            </app-card>
+            <app-card
+            nomeCampo="Professores apagados"
+            dadoCampo="32"
+            >
+            </app-card>
         </section>
         
         <app-professores-layout></app-professores-layout>
+
+        <app-botao-criar textoBotao="Cadastrar novo Professor"></app-botao-criar>
     </section>
 </main>

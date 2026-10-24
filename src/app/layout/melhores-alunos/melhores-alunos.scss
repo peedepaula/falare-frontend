@@ -32,6 +32,9 @@
         gap: 6px;
         width: 100%;
         margin-top: 22px;
+        min-height: 400px;
+        max-height: 600px;
+        overflow-y: auto;
     }
 
     .aluno-fundo{

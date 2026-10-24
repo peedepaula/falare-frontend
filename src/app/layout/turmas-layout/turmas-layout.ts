@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { UnidadeTurma } from '../unidade-turma/unidade-turma';
 
 @Component({
   selector: 'app-turmas-layout',
-  imports: [],
+  imports: [UnidadeTurma],
   templateUrl: './turmas-layout.html',
   styleUrl: './turmas-layout.scss',
 })

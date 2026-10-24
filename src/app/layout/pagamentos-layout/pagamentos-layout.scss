@@ -59,6 +59,9 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 8px;
+        min-height: 400px;
+        max-height: 600px;
+        overflow-y: auto;
         
         .pagamento{
             width: 100%;
