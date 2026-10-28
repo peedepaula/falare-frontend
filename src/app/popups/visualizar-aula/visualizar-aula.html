@@ -1,0 +1,41 @@
+<section class="pop-up-corpo">
+    <header class="header-popup">
+        <h5 class="titulo-popup">Aula</h5>
+        <button class="icone-x">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+    </header>
+
+    <div class="conteudo-popup">
+        <div class="header-sessao">
+            <button class="modelo-sessao-botao" (click)="trocarSessaoTela('dados')">Dados</button>
+            <button class="modelo-sessao-botao" (click)="trocarSessaoTela('alunos')">Alunos</button>
+        </div>
+
+
+        <div class="sessao-aberta">
+            @if(sessaoTela === "dados"){
+                <div class="conteudo-sessao-aberta">
+                    <p class="nome">Data:<span class="dado">10/10/2026</span></p>
+                    <p class="nome">Criado em:<span class="dado">10/10/2026</span></p>
+                    <p class="nome">Idioma:<span class="dado">INglês</span></p>
+                    <p class="nome">Nível:<span class="dado">1</span></p>
+                </div>
+            }
+            
+            @else {
+                <div class="conteudo-sessao-aberta">
+                    <input type="text" class="input-busca" placeholder="Pesquise por dados do aluno...">
+                    <div class="lista-alunos">
+                        @for (item of [].constructor(70); track $index){
+                            <app-unidade-aluno></app-unidade-aluno>
+                        }
+                    </div>
+                </div>
+            }
+
+            <button class="botao-apagar">Apagar aula</button>
+        </div>
+    </div>
+
+</section>
