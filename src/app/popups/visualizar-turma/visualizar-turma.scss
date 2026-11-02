@@ -1,0 +1,139 @@
+@use '../../../variaveis' as v;
+
+.pop-up-corpo{
+    background-color: v.$cor-fundo-branco;
+    width: 800px;
+    height: auto;
+    min-height: calc(100vh - 200px);
+    max-height: calc(100vh - 100px);
+    flex-shrink: 0;
+    border-radius: 10px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 32px;
+    box-sizing: border-box;
+
+    .header-popup{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        height: 35px;
+
+        .titulo-popup{
+            font-size: 14px;
+            font-weight: 550;
+            color: v.$cor-tema;
+            position: absolute;
+            left: 50%;
+
+        }
+
+        .icone-x{
+            width: 18px;
+            height: 18px;
+            color: v.$cor-tema;
+            border: none;
+            cursor: pointer;
+            margin-left: auto;
+            transition: all ease 0.4s;
+            background: none;
+
+            &:hover{
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .conteudo-popup{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .sessao-inicial{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .grid-dados{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+
+                .nome{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 500;                
+                    padding: 12px 12px;
+                    border-radius: 5px;
+                    background-color: v.$cor-tema;
+                    color: white;
+                    
+                    .dado{
+                        font-size: 13px;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+
+
+        .alunos{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .fundo-input{
+                width: 350px;
+                height: 30px;
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin: auto;
+            }
+
+            .pesquisa-input{
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                border: none;
+                padding: 0 10px;
+                box-sizing: border-box;
+                padding-left: 28px;
+                border: solid 1px v.$cor-tema;
+            }
+
+            .icone-pesquisa{
+                width: 14px;
+                height: 14px;
+                color: v.$cor-tema;
+                position: absolute;
+                left: 10px;
+            }
+
+            .lista-alunos{
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                box-sizing: border-box;
+                padding: 16px 22px;
+                max-height: 400px;
+                max-height: calc(100vh - 350px);
+                overflow-x: auto;
+                margin-bottom: 55px;
+            }
+        }
+    }
+
+    .nome-sessao{
+        font-size: 10px;
+        color: #35353538;
+    }
+
+}

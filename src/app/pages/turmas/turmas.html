@@ -20,8 +20,14 @@
             </app-card>
         </section>
         
-        <app-turmas-layout></app-turmas-layout>
+        <app-turmas-layout (mostrar)="mostrarVisualizarTurma=true"></app-turmas-layout>
 
         <app-botao-criar textoBotao="Cadastrar nova Turma"></app-botao-criar>
     </section>
+
+    @if (mostrarVisualizarTurma) {
+        <section class="pop-up">
+            <app-visualizar-turma (fechar)="trocarVisualizarTurma()"></app-visualizar-turma>
+        </section>
+    }
 </main>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-criar-aula',
@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './criar-aula.html',
   styleUrl: './criar-aula.scss',
 })
-export class CriarAula {}
+export class CriarAula {
+  @Output() fechar = new EventEmitter<void>();
+
+  fecharPopup(){
+    this.fechar.emit();
+  }
+}

@@ -13,7 +13,7 @@
 
     <div class="turmas">
         @for (item of [].constructor(70); track $index) {
-            <app-unidade-turma></app-unidade-turma>
+            <app-unidade-turma (click)="mostrarPopup()"></app-unidade-turma>
         }
         
     </div>

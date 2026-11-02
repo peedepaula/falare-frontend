@@ -12,4 +12,11 @@ import { VisualizarAula } from '../../popups/visualizar-aula/visualizar-aula';
   templateUrl: './aulas.html',
   styleUrl: './aulas.scss',
 })
-export class Aulas {}
+export class Aulas {
+  mostrarVisualizarAula: boolean = false;
+
+  trocarVisualizarAula(){
+    this.mostrarVisualizarAula = !this.mostrarVisualizarAula;
+  }
+
+}

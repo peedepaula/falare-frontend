@@ -23,10 +23,15 @@
         
         <app-aulas-layout></app-aulas-layout>
 
-        <app-botao-criar textoBotao="Cadastrar nova Aula"></app-botao-criar>
+        <app-botao-criar textoBotao="Cadastrar nova Aula" (click)="trocarVisualizarAula()"></app-botao-criar>
 
-        <section class="pop-up">
-            <app-visualizar-aula></app-visualizar-aula>
-        </section>
     </section>
+
+    @if (mostrarVisualizarAula) {
+        <section class="pop-up">
+            <app-visualizar-aula
+            (fechar)="trocarVisualizarAula()"
+            ></app-visualizar-aula>
+        </section>
+    }
 </main>

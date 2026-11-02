@@ -1,0 +1,37 @@
+<section class="pop-up-corpo">
+    <header class="header-popup">
+        <h5 class="titulo-popup">Turma</h5>
+        <button class="icone-x" (click)="fecharPopup()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+    </header>
+
+    <div class="conteudo-popup">
+        <div class="sessao-inicial">
+            <p class="nome-sessao">Dados:</p>
+            <div class="grid-dados">
+                <p class="nome">Professor:<span class="dado">Pedro</span></p>
+                <p class="nome">Idioma:<span class="dado">Inglês</span></p>
+                <p class="nome">Nível:<span class="dado">1</span></p>
+                <p class="nome">Criado em:<span class="dado">10/10/2026</span></p>
+            </div>
+        </div>
+        
+        <div class="alunos">
+            <p class="nome-sessao">Alunos:</p>
+            <div class="fundo-input">
+                <div class="icone-pesquisa">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+                </div>
+                <input type="text" class="pesquisa-input" placeholder="Pesquise pelo dados do aluno...">
+            </div>
+
+            <div class="lista-alunos">
+                @for (item of [].constructor(70); track $index) {
+                    <app-unidade-aluno></app-unidade-aluno>
+                }
+            </div>
+        </div>
+    </div>
+
+</section>
