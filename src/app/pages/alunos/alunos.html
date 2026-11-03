@@ -20,8 +20,13 @@
             </app-card>
         </section>
         
-        <app-alunos-layout></app-alunos-layout>
+        <app-alunos-layout (mostrar)="trocarVisualizarAluno()"></app-alunos-layout>
 
         <app-botao-criar textoBotao="Cadastrar novo Aluno"></app-botao-criar>
     </section>
+    @if (mostrarVisualizarAluno) {
+        <section class="pop-up">
+            <app-visualizar-aluno (fechar)="trocarVisualizarAluno()"></app-visualizar-aluno>
+        </section>
+    }
 </main>

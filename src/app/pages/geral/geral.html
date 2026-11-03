@@ -17,7 +17,13 @@
             ></app-card>
         </section>
         
-        <app-melhores-alunos class="melhores"></app-melhores-alunos>
-        <app-piores-alunos class="piores"></app-piores-alunos>
+        <app-melhores-alunos class="melhores" (mostrar)="trocarVisualizarAluno()"></app-melhores-alunos>
+        <app-piores-alunos class="piores" (mostrar)="trocarVisualizarAluno()"></app-piores-alunos>
     </section>
+
+    @if(mostrarVisualizarAluno){
+        <section class="pop-up">
+            <app-visualizar-aluno (fechar)="trocarVisualizarAluno()"></app-visualizar-aluno>
+        </section>
+    }
 </main>

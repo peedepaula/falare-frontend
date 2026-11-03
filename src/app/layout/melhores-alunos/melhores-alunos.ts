@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { UnidadeAluno } from '../unidade-aluno/unidade-aluno';
 
 @Component({
@@ -7,4 +7,11 @@ import { UnidadeAluno } from '../unidade-aluno/unidade-aluno';
   templateUrl: './melhores-alunos.html',
   styleUrl: './melhores-alunos.scss',
 })
-export class MelhoresAlunos {}
+export class MelhoresAlunos {
+  @Output() mostrar = new EventEmitter<void>();
+
+  mostrarPopup(){
+    this.mostrar.emit();
+  }
+
+}

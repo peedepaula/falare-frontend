@@ -13,7 +13,7 @@
 
     <div class="professores">
         @for (item of [].constructor(38); track $index) {
-            <app-unidade-professor></app-unidade-professor>
+            <app-unidade-professor (click)="mostrarPopup()"></app-unidade-professor>
         }
         
     </div>

@@ -1,0 +1,52 @@
+<section class="pop-up-corpo">
+    <header class="header-popup">
+        <h5 class="titulo-popup">Aluno</h5>
+        <button class="icone-x" (click)="fecharPopup()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+    </header>
+
+    <div class="conteudo-popup">
+        <div class="header-sessao">
+            <button class="modelo-sessao-botao" (click)="trocarSessaoTela('dados')" [class.ativo]="sessaoTela==='dados'">Dados</button>
+            <button class="modelo-sessao-botao" (click)="trocarSessaoTela('matricula')" [class.ativo]="sessaoTela==='matricula'">Matrícula</button>
+            <button class="modelo-sessao-botao" (click)="trocarSessaoTela('notas')" [class.ativo]="sessaoTela==='notas'">Notas</button>
+        </div>
+
+        <div class="sessao-aberta">
+            @if(sessaoTela === "dados"){
+                <div class="conteudo-sessao-aberta">
+                    <p class="nome">Nome:<span class="dado">Nome Exemplo</span></p>
+                    <p class="nome">E-mail:<span class="dado">seu@gmail.com</span></p>
+                    <p class="nome">Telefone:<span class="dado">(11) 98888-8888</span></p>
+                    <p class="nome">Faltas:<span class="dado">0</span></p>
+                    <p class="nome">Status:<span class="dado">Em andamento</span></p>
+                </div>
+            }
+            @else if(sessaoTela === "matricula"){
+                <div class="conteudo-sessao-aberta">
+                    <p class="nome">Turma:<span class="dado">Ing 4</span></p>
+                    <p class="nome">Idioma:<span class="dado">Inglês</span></p>
+                    <p class="nome">Nível:<span class="dado">1</span></p>
+                </div>
+            }
+            @else{
+                <div class="conteudo-sessao-aberta">
+                    <div class="fundo-input">
+                        <p class="nome-input">P1:</p>
+                        <input type="text" class="input-nota" placeholder="EX: 10.0">
+                    </div>
+                    <div class="fundo-input">
+                        <p class="nome-input">P2:</p>
+                        <input type="text" class="input-nota" placeholder="EX: 10.0">
+                    </div>
+                    <div class="fundo-input">
+                        <p class="nome-input">Trabalho:</p>
+                        <input type="text" class="input-nota" placeholder="EX: 10.0">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>

@@ -20,8 +20,14 @@
             </app-card>
         </section>
         
-        <app-professores-layout></app-professores-layout>
+        <app-professores-layout (mostrar)="trocarVisualizarCadastrarProfessor()"></app-professores-layout>
 
-        <app-botao-criar textoBotao="Cadastrar novo Professor"></app-botao-criar>
+        <app-botao-criar textoBotao="Cadastrar novo Professor" (click)="trocarVisualizarCadastrarProfessor()"></app-botao-criar>
     </section>
+
+    @if(mostrarVisualizarCadastrarProfessor){
+        <section class="pop-up">
+            <app-cadastrar-professor (fechar)="trocarVisualizarCadastrarProfessor()"></app-cadastrar-professor>
+        </section>
+    }
 </main>

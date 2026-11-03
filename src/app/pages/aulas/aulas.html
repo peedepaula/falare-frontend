@@ -21,9 +21,9 @@
             </app-card>
         </section>
         
-        <app-aulas-layout></app-aulas-layout>
+        <app-aulas-layout (mostrar)="trocarVisualizarAula()"></app-aulas-layout>
 
-        <app-botao-criar textoBotao="Cadastrar nova Aula" (click)="trocarVisualizarAula()"></app-botao-criar>
+        <app-botao-criar textoBotao="Cadastrar nova Aula"></app-botao-criar>
 
     </section>
 

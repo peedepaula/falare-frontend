@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { UnidadePagamento } from '../unidade-pagamento/unidade-pagamento';
 
 @Component({
@@ -7,4 +7,11 @@ import { UnidadePagamento } from '../unidade-pagamento/unidade-pagamento';
   templateUrl: './pagamentos-layout.html',
   styleUrl: './pagamentos-layout.scss',
 })
-export class PagamentosLayout {}
+export class PagamentosLayout {
+  @Output() mostrar = new EventEmitter<void>();
+
+  mostrarPopup(){
+    this.mostrar.emit();
+  }
+
+}

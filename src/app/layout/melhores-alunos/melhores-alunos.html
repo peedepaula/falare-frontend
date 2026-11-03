@@ -3,7 +3,7 @@
 
     <div class="lista-alunos">
         @for (item of [].constructor(10); track $index) {
-            <app-unidade-aluno></app-unidade-aluno>
+            <app-unidade-aluno (click)="mostrarPopup()"></app-unidade-aluno>
         }
     </div>
 </section>

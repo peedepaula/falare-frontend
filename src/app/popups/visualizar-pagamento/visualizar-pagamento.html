@@ -1,0 +1,40 @@
+<section class="pop-up-corpo">
+    <header class="header-popup">
+        <h5 class="titulo-popup">Pagamento</h5>
+        <button class="icone-x" (click)="fecharPopup()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+    </header>
+
+    <div class="conteudo-popup">
+        <section class="sessao-dados-alunos">
+            <div class="img-aluno">
+                <div class="icon-usuario">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                </div>
+            </div>
+
+            <div class="dados-aluno">
+                <h3 class="nome-aluno">Nome do Aluno</h3>
+
+                <p class="nome">E-mail:<span class="dado">seu@gmail.com</span></p>
+                <p class="nome">Telefone:<span class="dado">(11) 98888-8888</span></p>
+                <p class="nome">Curso:<span class="dado">Inglês</span></p>
+                <p class="nome">Nível:<span class="dado">1</span></p>
+            </div>
+        </section>
+
+        <section class="sessao-pagamentos">
+            <div class="icone-filtro">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-filter-2"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6h16" /><path d="M6 12h12" /><path d="M9 18h6" /></svg>
+            </div>
+
+            <div class="lista-pagamentos">
+                @for (item of [].constructor(12); track $index) {
+                    <app-unidade-pagamento></app-unidade-pagamento>
+                }
+            </div>
+        </section>
+    </div>
+
+</section>

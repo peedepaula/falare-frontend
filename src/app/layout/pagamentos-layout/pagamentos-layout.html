@@ -9,7 +9,7 @@
 
     <div class="pagamentos">
         @for (item of [].constructor(60); track $index) {
-            <app-unidade-pagamento></app-unidade-pagamento>
+            <app-unidade-pagamento (click)="mostrarPopup()"></app-unidade-pagamento>
         }
         
     </div>
