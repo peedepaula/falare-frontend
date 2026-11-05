@@ -1,0 +1,49 @@
+<section class="pop-up-corpo">
+    <header class="header-popup">
+        <h5 class="titulo-popup">Notas</h5>
+        <button class="icone-x" (click)="fecharPopup()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+    </header>
+
+    <div class="conteudo-popup">
+        <div class="fundo-semetre">
+            <input type="text" class="input-real" disabled placeholder="Inglês 1">
+            <button class="icon-seta" (click)="mostrarSemestre=!mostrarSemestre">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
+            </button>
+
+            @if (mostrarSemestre) {
+                <div class="fundo-conteudo-aberto" (click)="mostrarSemestre=!mostrarSemestre">
+                    <p class="opcao">Inglês 1</p>
+                    <p class="opcao">Inglês 2</p>
+                    <p class="opcao sem-border">Inglês 3</p>
+                </div>
+            }
+        </div>
+
+        <div class="fundo-notas">
+            <div class="nome-nota">
+                <p class="nome">P1:</p>
+                <h4 class="dado">8.0</h4>
+            </div>
+            <div class="nome-nota">
+                <p class="nome">P2:</p>
+                <h4 class="dado">8.0</h4>
+            </div>
+            <div class="nome-nota">
+                <p class="nome">Trabalho:</p>
+                <h4 class="dado">8.0</h4>
+            </div>
+            <div class="nome-nota">
+                <p class="nome">Média:</p>
+                <h4 class="dado">8.0</h4>
+            </div>
+            <div class="nome-nota">
+                <p class="nome">Status:</p>
+                <h4 class="dado">Aprovado!</h4>
+            </div>
+        </div>
+    </div>
+
+</section>

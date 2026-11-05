@@ -1,0 +1,27 @@
+<section class="pop-up-corpo">
+    <header class="header-popup">
+        <h5 class="titulo-popup">Cadastrar a aula</h5>
+        <button class="icone-x" (click)="fecharPopup()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+    </header>
+
+    <div class="conteudo-popup">
+        <div class="fundo-input">
+            <p class="nome-input">Selecione a turma:</p>
+            <div class="fundo-input-real">
+                <input type="text" class="input-nota" placeholder="EX: Turma 32" disabled>
+                <button class="icon-seta" (click)="mostrarTrumas=!mostrarTrumas">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
+                </button>
+
+                @if (mostrarTrumas) {
+                    <div class="fundo-conteudo-aberto" (click)="mostrarTrumas=!mostrarTrumas">
+                        
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <button class="salvar">Criar</button>
+</section>

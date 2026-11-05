@@ -1,0 +1,90 @@
+<section class="pop-up-corpo">
+    <header class="header-popup">
+        <h5 class="titulo-popup">Cadastrar turma</h5>
+        <button class="icone-x" (click)="fecharPopup()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+    </header>
+
+    <div class="conteudo-popup">
+        <div class="fundo-grid">
+            <div class="fundo-input">
+                <p class="nome-input">Idioma:</p>
+                <div class="fundo-input-real">
+                    <input type="text" class="input-nota" placeholder="EX:  Inglês" disabled>
+                    <button class="icon-seta" (click)="mostrarIdiomas=!mostrarIdiomas">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
+                    </button>
+
+                    @if (mostrarIdiomas) {
+                        <div class="fundo-conteudo-aberto" (click)="mostrarIdiomas=!mostrarIdiomas">
+                            <p class="opcao">Inglês</p> 
+                            <p class="opcao sem-border">Espanhol</p> 
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="fundo-input">
+                <p class="nome-input">Nível:</p>
+                <div class="fundo-input-real">
+                    <input type="text" class="input-nota" placeholder="EX: 1" disabled>
+                    <button class="icon-seta" (click)="mostrarNivel=!mostrarNivel">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
+                    </button>
+
+                    @if (mostrarNivel) {
+                        <div class="fundo-conteudo-aberto" (click)="mostrarNivel=!mostrarNivel">
+                            <p class="opcao">1</p> 
+                            <p class="opcao">2</p> 
+                            <p class="opcao sem-border">3</p> 
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="fundo-input">
+                <p class="nome-input">Idioma:</p>
+                <div class="grid-dias">
+                    <button class="dias">Seg</button>
+                    <button class="dias">Ter</button>
+                    <button class="dias">Qua</button>
+                    <button class="dias">Qui</button>
+                    <button class="dias">Sex</button>
+                    <button class="dias">Sab</button>
+                    <button class="dias">Dom</button>
+                </div>
+            </div>
+            <div class="fundo-input">
+                <p class="nome-input">horario:</p>
+                <div class="grid-horarios">
+                    <input type="text" class="input-horario" placeholder="EX: 09:00">
+                    <input type="text" class="input-horario" placeholder="EX: 11:00">
+                </div>
+            </div>
+            <div class="fundo-input">
+                <p class="nome-input">Selecionar professor:</p>
+                <div class="fundo-input-real">
+                    <input type="text" class="input-nota" placeholder="EX: José Paulo" disabled>
+                    <button class="icon-seta" (click)="mostrarProfessores=!mostrarProfessores">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
+                    </button>
+
+                    @if (mostrarProfessores) {
+                        <div class="fundo-conteudo-aberto" (click)="mostrarProfessores=!mostrarProfessores">
+                            
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="fundo-input">
+                <p class="nome-input">Vagas:</p>
+                <input type="text" class="input-nota" placeholder="EX: 75">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="botoes-footer">
+        <button class="salvar apagar">Apagar</button>
+        <button class="salvar">Salvar</button>
+    </div>
+</section>

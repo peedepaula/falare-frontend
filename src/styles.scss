@@ -1,3 +1,4 @@
+@use './variaveis' as v;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
@@ -51,6 +52,11 @@
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
     animation: aparecerPopup 0.4s ease;
+}
+
+.linha-padrao{
+    height: 30px;
+    border: solid 1px v.$cor-tema-para-borda-conteudo;
 }
 
 @keyframes aparecerPopup {

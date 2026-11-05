@@ -1,0 +1,44 @@
+<main class="modelo-corpo-painel">
+    <app-header class="header"></app-header>
+    <app-nav class="nav"></app-nav>
+    <section class="conteudo">
+        <section class="cards">
+            <app-card 
+            nomeCampo="Consultar sua frequência"
+            dadoCampo="Boa"
+            [botaoAtivo]="true"
+            (mostrar)="mostrarFrequencia=true"
+            ></app-card>
+            <app-card
+            nomeCampo="Consultar suas notas"
+            [botaoAtivo]="true"
+            (mostrar)="mostrarNotas=true"
+            ></app-card>
+            <app-card
+            nomeCampo="Situação financeira"
+            dadoCampo="Pago"
+            [botaoAtivo]="true"
+            (mostrar)="mostrarFinanceiro=true"
+            ></app-card>
+        </section>
+        
+        <!-- <app-melhores-alunos class="melhores" (mostrar)="trocarVisualizarAluno()"></app-melhores-alunos>
+        <app-piores-alunos class="piores" (mostrar)="trocarVisualizarAluno()"></app-piores-alunos> -->
+        
+        @if(mostrarFrequencia){
+            <section class="pop-up">
+                <app-visualizar-aluno-frequencia (fechar)="mostrarFrequencia=false"></app-visualizar-aluno-frequencia>
+            </section>
+        }
+        @if(mostrarNotas){
+            <section class="pop-up">
+            <app-visualizar-aluno-notas (fechar)="mostrarNotas=false"></app-visualizar-aluno-notas>
+            </section>
+        }
+        @if(mostrarFinanceiro){
+            <section class="pop-up">
+                <app-visualizar-aluno-financeiro (fechar)="mostrarFinanceiro=false"></app-visualizar-aluno-financeiro>
+            </section>
+        }
+    </section>
+</main>

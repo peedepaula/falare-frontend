@@ -1,4 +1,7 @@
 <section class="card-corpo">
     <p class="titlo-card">{{ nomeCampo() }}:</p>
-    <h4 class="card-dado">{{dadoCampo() }}</h4>
+    <h4 class="card-dado">{{ dadoCampo() }}</h4>
+    @if(botaoAtivo()){
+        <button class="botao-card" (click)="mostrarPopup()">Consultar</button>
+    }
 </section>

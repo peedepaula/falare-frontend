@@ -5,6 +5,8 @@
     height: auto;
     background-color: v.$cor-tema;
 
+    background-color: v.$cor-fundo-componentes;
+
     padding: 22px 24px;
     box-sizing: border-box;
     border-radius: 10px;
@@ -12,11 +14,15 @@
     flex-direction: column;
     position: relative;
 
+    border: solid 1.5px v.$cor-tema-para-borda-conteudo;
+
     .titulo-padrao{
         font-size: 10px;
         font-weight: 500;
         color: v.$cor-tema;
+        color: v.$cor-fundo-branco;
         background-color: v.$cor-fundo-branco;
+        background-color: v.$cor-tema;
         margin: auto;
         position: absolute;
         top: 0;
@@ -32,8 +38,8 @@
         gap: 6px;
         width: 100%;
         margin-top: 22px;
-        min-height: 400px;
-        max-height: 600px;
+        min-height: 300px;
+        max-height: calc(100vh - 330px);
         overflow-y: auto;
     }
 

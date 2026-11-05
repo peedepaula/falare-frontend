@@ -22,12 +22,18 @@
         
         <app-pagamentos-layout (mostrar)="trocarVisualizarPagamento()"></app-pagamentos-layout>
 
-        <app-botao-criar textoBotao="Cadastrar novo Pagamento"></app-botao-criar>
+        <app-botao-criar textoBotao="Cadastrar novo Pagamento" (click)="mostrarCadastrarPagamento=true"></app-botao-criar>
     </section>
 
     @if(mostrarVisualizarPagamento){
         <section class="pop-up">
             <app-visualizar-pagamento (fechar)="trocarVisualizarPagamento()"></app-visualizar-pagamento>
+        </section>
+    }
+
+    @if(mostrarCadastrarPagamento){
+        <section class="pop-up">
+            <app-cadastrar-pagamento (fechar)="mostrarCadastrarPagamento=false"></app-cadastrar-pagamento>
         </section>
     }
 </main>

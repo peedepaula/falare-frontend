@@ -6,7 +6,7 @@
     flex-direction: row;
     align-items: center;
     gap: 16px;
-    height: 60px;
+    height: 76px;
     border-radius: 10px;
     background-color: white;
     flex-shrink: 0;
@@ -15,7 +15,7 @@
     padding: 0 16px;
     cursor: pointer;
     transition: all ease 0.4s;
-    border: solid 1px v.$cor-tema;
+    border: solid 1px v.$cor-tema-para-borda-conteudo;
 
     &:hover{
         opacity: 0.7;
@@ -36,6 +36,7 @@
             flex-shrink: 0;
             border-radius: 100px;
             background-color: v.$cor-fundo-offwhite;
+            border: solid 1px v.$cor-tema-para-borda-conteudo;
     
             .icon-usuario{
                 width: 14px;
@@ -79,12 +80,12 @@
         position: absolute;
         top: 0;
         right: 0;
-        font-size: 10px;
-        font-weight: 350;
+        font-size: 9px;
+        font-weight: 500;
         color: white;
-        padding: 3px 6px;
+        padding: 3px 14px;
         background-color: v.$cor-tema;
-        border-radius: 0 9px 0 10px;
+        border-radius: 0 10px 0 10px;
         border: solid 1px white;
     }
 

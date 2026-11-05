@@ -1,0 +1,26 @@
+<section class="pop-up-corpo">
+    <header class="header-popup">
+        <h5 class="titulo-popup">Financeiro</h5>
+        <button class="icone-x" (click)="fecharPopup()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+    </header>
+
+    <div class="conteudo-popup">
+        <div class="status">
+            <p class="sessao">Status atual:</p>
+            <h3 class="status-real">Pago!</h3>
+
+        </div>
+
+        <div class="historico">
+            <p class="sessao">Histórico:</p>
+            <div class="lista-transacoes">
+                @for (item of [].constructor(30); track $index) {
+                    <app-unidade-pagamento></app-unidade-pagamento>
+                }
+            </div>
+        </div>
+    </div>
+
+</section>

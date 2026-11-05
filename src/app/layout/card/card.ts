@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,6 +7,13 @@ import { Component, input } from '@angular/core';
   styleUrl: './card.scss',
 })
 export class Card {
-  nomeCampo = input<string>('nome')
-  dadoCampo = input<string>('0')
+  nomeCampo = input<string>('nome');
+  dadoCampo = input<string>('');
+  botaoAtivo = input<boolean>(false);
+
+  @Output() mostrar = new EventEmitter<void>();
+
+  mostrarPopup(){
+    this.mostrar.emit();
+  }
 }

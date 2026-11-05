@@ -20,8 +20,14 @@
             </app-card>
         </section>
         
-        <app-matriculas-layout></app-matriculas-layout>
+        <app-matriculas-layout (mostrar)="trocarMostrarCadastrarMatricula()"></app-matriculas-layout>
 
-        <app-botao-criar textoBotao="Cadastrar nova Matrícula"></app-botao-criar>
+        <app-botao-criar textoBotao="Cadastrar nova Matrícula" (click)="trocarMostrarCadastrarMatricula()"></app-botao-criar>
     </section>
+
+    @if(mostrarCadastrarMatricula){
+        <section class="pop-up">
+            <app-cadastrar-matricula (fechar)="trocarMostrarCadastrarMatricula()"></app-cadastrar-matricula>
+        </section>
+    }
 </main>

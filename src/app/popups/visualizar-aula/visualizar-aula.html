@@ -21,7 +21,7 @@
                     <p class="nome">Idioma:<span class="dado">Inglês</span></p>
                     <p class="nome">Nível:<span class="dado">1</span></p>
 
-                    <button class="botao-chamada">Fazer chamada</button>
+                    <button class="botao-chamada" (click)="mostrarChamada=true">Fazer chamada</button>
                 </div>
             }
             
@@ -45,5 +45,7 @@
             <button class="botao-apagar">Apagar aula</button>
         </div>
     </div>
-
+    @if(mostrarChamada){
+        <app-chamada (fechar)="mostrarChamada=false"></app-chamada>
+    }
 </section>

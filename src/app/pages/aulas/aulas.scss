@@ -34,7 +34,8 @@
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
-
+    border: solid 1.5px v.$cor-tema-para-borda-conteudo;
+    
     .cards {
         grid-area: cards;
 

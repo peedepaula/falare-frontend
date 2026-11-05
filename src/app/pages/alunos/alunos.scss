@@ -32,6 +32,7 @@
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    border: solid 1.5px v.$cor-tema-para-borda-conteudo;
 
     .cards {
         grid-area: cards;

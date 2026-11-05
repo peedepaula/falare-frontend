@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background-color: v.$cor-tema;
+    background-color: v.$cor-fundo-componentes;
     border-radius: 10px;
     width: 100%;
     height: auto;
@@ -12,12 +12,13 @@
     padding: 22px 24px;
     box-sizing: border-box;
     position: relative;
+    border: solid 1px v.$cor-tema-para-borda-conteudo;
 
     .titulo-padrao{
         font-size: 10px;
         font-weight: 500;
-        color: v.$cor-tema;
-        background-color: v.$cor-fundo-branco;
+        color: white;
+        background-color: v.$cor-tema;
         margin: auto;
         position: absolute;
         top: 0;
@@ -50,7 +51,7 @@
         width: 18px;
         height: 18px;
         cursor: pointer;
-        color: white;
+        color: v.$cor-tema;
         position: absolute;
         right: 0;
     }
@@ -59,8 +60,8 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 8px;
-        min-height: 400px;
-        max-height: 600px;
+        min-height: 300px;
+        max-height: calc(100vh - 370px);
         overflow-y: auto;
         
         .pagamento{

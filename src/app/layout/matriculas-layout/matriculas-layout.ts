@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { UnidadeMatricula } from '../unidade-matricula/unidade-matricula';
 
 @Component({
@@ -7,4 +7,11 @@ import { UnidadeMatricula } from '../unidade-matricula/unidade-matricula';
   templateUrl: './matriculas-layout.html',
   styleUrl: './matriculas-layout.scss',
 })
-export class MatriculasLayout {}
+export class MatriculasLayout {
+  @Output() mostrar = new EventEmitter<void>();
+
+  mostrarPopup(){
+    this.mostrar.emit();
+  }
+
+}

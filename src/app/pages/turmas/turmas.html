@@ -22,12 +22,18 @@
         
         <app-turmas-layout (mostrar)="mostrarVisualizarTurma=true"></app-turmas-layout>
 
-        <app-botao-criar textoBotao="Cadastrar nova Turma"></app-botao-criar>
+        <app-botao-criar textoBotao="Cadastrar nova Turma" (click)="mostrarCadastrarTurma=true"></app-botao-criar>
     </section>
 
     @if (mostrarVisualizarTurma) {
         <section class="pop-up">
             <app-visualizar-turma (fechar)="trocarVisualizarTurma()"></app-visualizar-turma>
+        </section>
+    }
+
+    @if (mostrarCadastrarTurma) {
+        <section class="pop-up">
+            <app-cadastrar-turma (fechar)="mostrarCadastrarTurma=false"></app-cadastrar-turma>
         </section>
     }
 </main>

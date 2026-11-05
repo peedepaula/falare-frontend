@@ -5,15 +5,17 @@ import { Card } from '../../layout/card/card';
 import { PagamentosLayout } from '../../layout/pagamentos-layout/pagamentos-layout';
 import { BotaoCriar } from '../../layout/botao-criar/botao-criar';
 import { VisualizarPagamento } from '../../popups/visualizar-pagamento/visualizar-pagamento';
+import { CadastrarPagamento } from '../../popups/cadastrar-pagamento/cadastrar-pagamento';
 
 @Component({
   selector: 'app-pagamentos',
-  imports: [Header, Nav, Card, PagamentosLayout, BotaoCriar, VisualizarPagamento],
+  imports: [Header, Nav, Card, PagamentosLayout, BotaoCriar, VisualizarPagamento, CadastrarPagamento],
   templateUrl: './pagamentos.html',
   styleUrl: './pagamentos.scss',
 })
 export class Pagamentos {
   mostrarVisualizarPagamento: boolean = false;
+  mostrarCadastrarPagamento: boolean = false;
 
   trocarVisualizarPagamento(){
     this.mostrarVisualizarPagamento = !this.mostrarVisualizarPagamento;

@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    position: relative;
 
     .titlo-card{
         font-size: 12px;
@@ -22,5 +23,25 @@
         font-weight: 550;
         color: white;
         padding-left: 12px;
+    }
+
+    .botao-card{
+        background-color: white;
+        color: v.$cor-tema;
+        padding: 3px 16px;
+        border-radius: 5px;
+        border: none;
+        font-size: 12px;
+        font-weight: 500;
+        width: fit-content;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        cursor: pointer;
+        transition: all ease 0.7s;
+
+        &:hover{
+            opacity: 0.7;
+        }
     }
 }

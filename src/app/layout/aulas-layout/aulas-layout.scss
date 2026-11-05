@@ -4,13 +4,14 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background-color: v.$cor-tema;
+    background-color: v.$cor-fundo-componentes;
     border-radius: 10px;
     width: 100%;
     height: auto;
     flex-shrink: 0;
     padding: 22px 24px;
     box-sizing: border-box;
+    border: solid 1px v.$cor-tema-para-borda-conteudo;
 
     .header{
         display: flex;
@@ -38,6 +39,7 @@
             padding: 0 10px;
             box-sizing: border-box;
             padding-left: 28px;
+            border: solid 1px v.$cor-tema-para-borda-conteudo;
         }
 
         .icone-pesquisa{
@@ -52,7 +54,7 @@
             width: 18px;
             height: 18px;
             cursor: pointer;
-            color: white;
+            color: v.$cor-tema;
             position: absolute;
             right: 0;
         }
@@ -62,8 +64,8 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
-        min-height: 400px;
-        max-height: 600px;
+        min-height: 300px;
+        max-height: calc(100vh - 370px);
         overflow-y: auto;
         
         .aula{

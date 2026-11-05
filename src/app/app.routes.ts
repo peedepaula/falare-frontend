@@ -7,6 +7,7 @@ import { Alunos } from './pages/alunos/alunos';
 import { Matriculas } from './pages/matriculas/matriculas';
 import { Professores } from './pages/professores/professores';
 import { Pagamentos } from './pages/pagamentos/pagamentos';
+import { GeralAluno } from './pages/geral-aluno/geral-aluno';
 
 export const routes: Routes = [
     {
@@ -44,5 +45,9 @@ export const routes: Routes = [
     {
         path: "pagamentos",
         component: Pagamentos
+    },
+    {
+        path: "geral/aluno",
+        component: GeralAluno
     }
 ];
