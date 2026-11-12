@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-unidade-aula',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './unidade-aula.html',
   styleUrl: './unidade-aula.scss',
 })
-export class UnidadeAula {}
+export class UnidadeAula {
+  @Input() aula: any;
+}

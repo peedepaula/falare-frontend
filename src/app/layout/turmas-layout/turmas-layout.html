@@ -12,8 +12,11 @@
     </div>
 
     <div class="turmas">
-        @for (item of [].constructor(70); track $index) {
-            <app-unidade-turma (click)="mostrarPopup()"></app-unidade-turma>
+        @for (turma of turmas(); track turma.id){
+            <app-unidade-turma
+            [turma]="turma"
+            (click)="mostrarPopup()"
+            ></app-unidade-turma>
         }
         
     </div>

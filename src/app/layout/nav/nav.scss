@@ -19,6 +19,7 @@
     flex-direction: column;
     gap: 18px;
     overflow-y: auto;
+    overflow-x: hidden;
     user-select: none;
 
     .link-nav{
@@ -30,12 +31,17 @@
         flex-direction: row;
         gap: 8px;
         transition: all ease 0.4s;
+        border-bottom: solid 1px #d9d7d73e;
         
         &.ativo{
             background-color: white;
             color: v.$cor-tema;
             border-radius: 10px;
     
+        }
+
+        &.sem-border{
+            border: none;
         }
     }
 
@@ -45,10 +51,6 @@
         color: v.$cor-tema;
         border-radius: 10px;
 
-    }
-
-    .border{
-        border-bottom: solid 1px #d9d7d73e;
     }
 
     .link-nav-icone{

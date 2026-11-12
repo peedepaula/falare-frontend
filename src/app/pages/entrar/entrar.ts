@@ -42,6 +42,7 @@ export class Entrar implements OnInit {
     }).subscribe({
       next: () => {
         this.carregando = false;
+        localStorage.setItem('tipoUsuario', this.getTipoUsuario().toString());
         this.router.navigate([this.isAdmin ? '/geral' : '/geral/aluno']);
       },
       error: (err) => {
