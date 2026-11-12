@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService  } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,15 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
+  private auth = inject(AuthService);
   mostrarMenu: boolean = false;
 
   mudarVisibilidadeMenu(){
     this.mostrarMenu = !this.mostrarMenu;
+  }
+
+  sair() {
+    this.mostrarMenu = false;
+    this.auth.logout();
   }
 }

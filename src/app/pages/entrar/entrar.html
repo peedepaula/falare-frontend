@@ -1,29 +1,37 @@
 <main class="modelo-corpo-entrar">
     <app-header class="header"></app-header>
     <section class="conteudo">
-        <div class="corpo-entrar">
+        <form class="corpo-entrar" (ngSubmit)="entrar()">
             <h5 class="titulo-entrar">Entrar</h5>
 
             <div class="inputs">
                 @if (isAdmin) {
                     <div class="tipo-usuario">
-                        <button class="botao-tipo" [class.ativo]="typeUser == 'professor'" (click)="typeUser='professor'">Professor</button>
-                        <button class="botao-tipo" [class.ativo]="typeUser == 'secretaria'" (click)="typeUser='secretaria'">Secretaria</button>
+                        <button type="button" class="botao-tipo" [class.ativo]="typeUser == 'professor'" (click)="typeUser='professor'">Professor</button>
+                        <button type="button" class="botao-tipo" [class.ativo]="typeUser == 'secretaria'" (click)="typeUser='secretaria'">Secretaria</button>
                     </div>
                 }
 
                 <div class="input-fundo">
                     <p class="texto-input">E-mail:</p>
-                    <input type="text" name="email" class="input-real" placeholder="Digite seu E-mail...">
+                    <input type="email" name="email" class="input-real" placeholder="Digite seu E-mail..."
+                           [(ngModel)]="email" autocomplete="username">
                 </div>
                 <div class="input-fundo">
                     <p class="texto-input">Senha:</p>
-                    <input type="password" name="senha" class="input-real" placeholder="Digite sua Senha...">
+                    <input type="password" name="senha" class="input-real" placeholder="Digite sua Senha..."
+                           [(ngModel)]="senha" autocomplete="current-password">
                     <p class="detalhe">Esqueceu a senha? <span class="pode-clicar">Clique aqui para trocar a senha.</span></p>
                 </div>
+
+                @if (erro) {
+                    <p class="erro">{{ erro }}</p>
+                }
             </div>
 
-            <button class="botao-entrar" [routerLink]="['/geral']">Entrar</button>
-        </div>
+            <button type="submit" class="botao-entrar" [disabled]="carregando">
+                {{ carregando ? 'Entrando...' : 'Entrar' }}
+            </button>
+        </form>
     </section>
 </main>
