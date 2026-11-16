@@ -130,4 +130,45 @@
             }
         }
     }
+
+}
+
+.botoes-final{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    
+    .botao-editar{
+        padding: 10px 32px;
+        background-color: v.$cor-tema;
+        color: v.$cor-branco-texo;
+        font-size: 13px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all ease 0.4s;
+
+        &:hover{
+            opacity: 0.7;
+        }
+    }
+
+    .botao-apagar{
+        padding: 10px 32px;
+        background-color: v.$cor-vemelho;
+        color: v.$cor-branco-texo;
+        font-size: 13px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all ease 0.4s;
+
+        &:hover{
+            opacity: 0.7;
+        }
+    }
 }

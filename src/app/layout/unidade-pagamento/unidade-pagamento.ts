@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-unidade-pagamento',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './unidade-pagamento.html',
   styleUrl: './unidade-pagamento.scss',
 })
-export class UnidadePagamento {}
+export class UnidadePagamento {
+  @Input() pagamento: any;
+}

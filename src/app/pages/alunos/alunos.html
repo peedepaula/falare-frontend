@@ -20,19 +20,40 @@
             </app-card>
         </section>
         
-        <app-alunos-layout (mostrar)="trocarVisualizarAluno()"></app-alunos-layout>
-
-        <app-botao-criar textoBotao="Cadastrar novo Aluno" (click)="mostrarCadastrarAluno=true"></app-botao-criar>
+        <app-alunos-layout (mostrar)="abrirVisualizar($event)"></app-alunos-layout>
+        <app-botao-criar textoBotao="Cadastrar novo Aluno" (click)="abrirCadastro()"></app-botao-criar>
     </section>
 
     @if (mostrarVisualizarAluno) {
         <section class="pop-up">
-            <app-visualizar-aluno (fechar)="trocarVisualizarAluno()"></app-visualizar-aluno>
+            <app-visualizar-aluno
+                [aluno]="alunoSelecionado"
+                (fechar)="fecharVisualizar()"
+                (editar)="abrirEdicao()"
+                (apagar)="abrirApagar()">
+            </app-visualizar-aluno>
         </section>
     }
     @if (mostrarCadastrarAluno) {
         <section class="pop-up">
-            <app-cadastrar-aluno (fechar)="mostrarCadastrarAluno=false"></app-cadastrar-aluno>
+            <app-cadastrar-aluno
+            [aluno]="alunoSelecionado"
+            (fechar)="mostrarCadastrarAluno=false"
+            (salvo)="aoSalvar()">
+            </app-cadastrar-aluno>
+        </section>
+    }
+    @if (mostrarApagarAluno) {
+        <section class="pop-up">
+            <app-global-confirmacao
+                [titulo]="'Apagar Aluno'"
+                [descricao]="'Deseja realmente apagar o Aluno, ao apagar não é possivel realizar a recuperação.'"
+                [tipo]="'apagar'"
+
+                (fechar)="fecharApagar()"
+                (confirmado)="apagarUsuario()"
+            >
+            </app-global-confirmacao>
         </section>
     }
 </main>

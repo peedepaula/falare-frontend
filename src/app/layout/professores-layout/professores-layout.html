@@ -12,8 +12,16 @@
     </div>
 
     <div class="professores">
-        @for (item of [].constructor(38); track $index) {
-            <app-unidade-professor (click)="mostrarPopup()"></app-unidade-professor>
+        @if(professores().length > 0){
+            @for (professor of professores(); track professor.id) {
+                <app-unidade-professor
+                [professor]="professor"
+                (click)="mostrarPopup()"
+                ></app-unidade-professor>
+            }
+        }
+        @else{
+            <p class="nao-tem">Sem Professores</p>
         }
         
     </div>

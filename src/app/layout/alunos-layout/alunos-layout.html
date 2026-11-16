@@ -15,7 +15,7 @@
         @for (aluno of alunos(); track aluno.id) {
             <app-unidade-aluno
             [aluno]="aluno"
-            (click)="mostrarPopup()"
+            (click)="mostrarPopup(aluno)"
             ></app-unidade-aluno>
         }
         

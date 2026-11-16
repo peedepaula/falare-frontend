@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
 import { UnidadeProfessor } from '../unidade-professor/unidade-professor';
+import { ProfessorService } from '../../core/services/professor.service';
 
 @Component({
   selector: 'app-professores-layout',
@@ -7,10 +8,25 @@ import { UnidadeProfessor } from '../unidade-professor/unidade-professor';
   templateUrl: './professores-layout.html',
   styleUrl: './professores-layout.scss',
 })
-export class ProfessoresLayout {
+export class ProfessoresLayout implements OnInit {
+  private ProfessorService = inject(ProfessorService);
   @Output() mostrar = new EventEmitter<void>();
 
   mostrarPopup(){
     this.mostrar.emit();
+  }
+
+  professores = signal<any[]>([]);
+
+  ngOnInit(): void {
+    this.ProfessorService.buscarProfessores().subscribe({
+      next: (res) => {
+        this.professores.set(res);
+        console.log('Professores', this.professores());
+      },
+      error: (err) => {
+        console.error('Erro ao buscar Professores:', err);
+      }
+    })
   }
 }

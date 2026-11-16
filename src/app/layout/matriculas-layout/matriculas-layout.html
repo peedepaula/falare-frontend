@@ -12,8 +12,16 @@
     </div>
 
     <div class="matriculas">
-        @for (item of [].constructor(120); track $index) {
-            <app-unidade-matricula (click)="mostrarPopup()"></app-unidade-matricula>
+        @if(matriculas().length > 0){
+            @for (matricula of matriculas(); track matricula.id) {
+                <app-unidade-matricula
+                [matricula]="matricula"
+                (click)="mostrarPopup()"
+                ></app-unidade-matricula>
+            }
+        }
+        @else{
+            <p class="nao-tem">Sem mátriculas</p>
         }
         
     </div>

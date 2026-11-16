@@ -32,7 +32,7 @@ export class AlunosLayout implements OnInit {
     });
   }
 
-  mostrarPopup() {
-    this.mostrar.emit();
+  mostrarPopup(aluno: any) {
+    this.mostrar.emit(aluno);
   }
 }

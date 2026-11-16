@@ -8,8 +8,17 @@
     </div>
 
     <div class="pagamentos">
-        @for (item of [].constructor(60); track $index) {
-            <app-unidade-pagamento (click)="mostrarPopup()"></app-unidade-pagamento>
+        @if(pagamentos().length > 0){
+            @for (pagamento of pagamentos(); track pagamento.id) {
+                <app-unidade-pagamento
+                [pagamento]="pagamento"
+                (click)="mostrarPopup()"
+                >
+                </app-unidade-pagamento>
+            }
+        }
+        @else {
+            <p class="nao-tem">Sem pagamentos</p>
         }
         
     </div>
