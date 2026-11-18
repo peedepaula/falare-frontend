@@ -15,7 +15,7 @@
             </div>
 
             <div class="dados-aluno">
-                <h3 class="nome-aluno">Nome do Aluno</h3>
+                <h3 class="nome-aluno">{{ pagamentoSelecionado.alunoNome}}</h3>
 
                 <p class="nome">E-mail:<span class="dado">seu@gmail.com</span></p>
                 <p class="nome">Telefone:<span class="dado">(11) 98888-8888</span></p>
@@ -25,16 +25,23 @@
         </section>
 
         <section class="sessao-pagamentos">
-            <div class="icone-filtro">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-filter-2"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6h16" /><path d="M6 12h12" /><path d="M9 18h6" /></svg>
+            <div class="nome-dado">
+                <h5 class="nome">Valor:</h5>
+                <p class="dado">R$: {{ pagamentoSelecionado.valor }}</p>
             </div>
-
-            <div class="lista-pagamentos">
-                @for (item of [].constructor(12); track $index) {
-                    <app-unidade-pagamento></app-unidade-pagamento>
-                }
+            <div class="nome-dado">
+                <h5 class="nome">Status:</h5>
+                <p class="dado"> {{ pagamentoSelecionado.status }} </p>
+            </div>
+            <div class="nome-dado">
+                <h5 class="nome">CriadoEm:</h5>
+                <p class="dado"> {{ pagamentoSelecionado.criadoEm }} </p>
             </div>
         </section>
+    </div>
+    <div class="botoes-footer">
+        <button class="salvar apagar" (click)="deletarPagamento()">Apagar</button>
+        <button class="salvar" (click)="passarPagamento()">Editar</button>
     </div>
 
 </section>

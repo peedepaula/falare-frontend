@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { Header } from '../../layout/header/header';
 import { Nav } from '../../layout/nav/nav';
 import { TurmasLayout } from '../../layout/turmas-layout/turmas-layout';
@@ -14,11 +14,30 @@ import { CadastrarTurma } from '../../popups/cadastrar-turma/cadastrar-turma';
   styleUrl: './turmas.scss',
 })
 export class Turmas {
+  private turmasLayout = viewChild(TurmasLayout);
+
   mostrarVisualizarTurma: boolean = false;
   mostrarCadastrarTurma: boolean = false;
 
-  trocarVisualizarTurma(){
-    this.mostrarVisualizarTurma = !this.mostrarVisualizarTurma;
+  turmaSelecionada: any;
+
+  visualizarTurma(turma: any){
+    this.turmaSelecionada = turma;
+    this.mostrarVisualizarTurma = true;
+  }
+
+  fecharTurma(){
+    this.turmaSelecionada = null;
+    this.mostrarVisualizarTurma = false;
+  }
+
+  recarregarTurmas(){
+    this.turmasLayout()?.buscarTurmas();
+  }
+
+  fecharEditarCadastrarTurma(){
+    this.turmaSelecionada = null;
+    this.mostrarCadastrarTurma = false;
   }
 
 }

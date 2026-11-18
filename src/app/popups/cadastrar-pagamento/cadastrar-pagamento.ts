@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
 import { AlunoService } from '../../core/services/aluno.service';
 import { CadatroPagamento, PagamentoService } from '../../core/services/pagamento.service';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,8 @@ export class CadastrarPagamento implements OnInit{
   mostrarBuscarAlunos: boolean = false;
   mostrarStatus: boolean = false;
 
+  @Input() pagamentoSelecionado: any;
+
   @Output() fechar = new EventEmitter<void>();
   @Output() recarregarPagamentos = new EventEmitter<void>();
 
@@ -25,6 +27,13 @@ export class CadastrarPagamento implements OnInit{
 
   ngOnInit(): void {
     this.buscarAlunos();
+
+    if(this.pagamentoSelecionado){
+      this.alunoSelecionado.nome = this.pagamentoSelecionado.alunoNome;
+      this.pagamento.alunoId = this.pagamentoSelecionado.alunoId;
+      this.pagamento.status = this.pagamentoSelecionado.status;
+      this.pagamento.valor = this.pagamentoSelecionado.valor;
+    }
   }
 
   pagamento: CadatroPagamento = {
@@ -34,7 +43,7 @@ export class CadastrarPagamento implements OnInit{
   };
 
   alunos = signal<any[]>([])
-  alunoSelecionado: any;
+  alunoSelecionado: { id?: string; nome?: string } = {nome: ''};
 
   private paraNumero(valor: string | number): number | undefined {
     if (valor === '' || valor === null || valor === undefined) return undefined;
@@ -42,9 +51,32 @@ export class CadastrarPagamento implements OnInit{
     return isNaN(n) ? undefined : n;
   }
 
-  cadastrarPagamento(){
+  cadastrarAtualizarPagamento(){
     const valor = this.paraNumero(this.pagamento.valor);
-    if (!this.alunoSelecionado?.id || valor === undefined || valor <= 0) return;
+    if (valor === undefined || valor <= 0) return;
+
+    if(this.pagamentoSelecionado){
+      this.pagamentoService.atualizarPagamento(
+        this.pagamentoSelecionado.id,
+        {
+          status: this.pagamento.status,
+          valor: valor
+        }
+      ).subscribe({
+        next: (res) => {
+          this.fechar.emit();
+          this.recarregarPagamentos.emit();
+  
+          console.log('Pagamento atualizado');
+        },
+        error: (err) => {
+          console.log('Erro ao tentar atualizar pagamento: ', err);
+        }
+      })
+      return;
+    }
+
+    if (!this.alunoSelecionado.id) return;
 
     this.pagamentoService.cadastrarPagamento(
       {
@@ -63,6 +95,7 @@ export class CadastrarPagamento implements OnInit{
         console.log('Erro ao tentar cadastrar pagamento: ', err);
       }
     })
+
   }
 
   buscarAlunos(){

@@ -10,10 +10,10 @@
         <div class="sessao-inicial">
             <p class="nome-sessao">Dados:</p>
             <div class="grid-dados">
-                <p class="nome">Professor:<span class="dado">Pedro</span></p>
-                <p class="nome">Idioma:<span class="dado">Inglês</span></p>
-                <p class="nome">Nível:<span class="dado">1</span></p>
-                <p class="nome">Criado em:<span class="dado">10/10/2026</span></p>
+                <p class="nome">Professor:<span class="dado">{{ turmaSelecionada.professorNome }}</span></p>
+                <p class="nome">Idioma:<span class="dado">{{ turmaSelecionada.idioma }}</span></p>
+                <p class="nome">Nível:<span class="dado">{{ turmaSelecionada.nivel }}</span></p>
+                <p class="nome">Criado em:<span class="dado">{{ turmaSelecionada.criadoEm }}</span></p>
             </div>
         </div>
         
@@ -26,12 +26,17 @@
                 <input type="text" class="pesquisa-input" placeholder="Pesquise pelo dados do aluno...">
             </div>
 
-            <div class="lista-alunos">
+            <!-- <div class="lista-alunos">
                 @for (item of [].constructor(70); track $index) {
                     <app-unidade-aluno></app-unidade-aluno>
                 }
-            </div>
+            </div> -->
         </div>
+    </div>
+
+    <div class="botoes-footer">
+        <button class="salvar apagar" (click)="deletarTurma()">Apagar</button>
+        <button class="salvar" (click)="mostrarEditarTurma()">Editar</button>
     </div>
 
 </section>

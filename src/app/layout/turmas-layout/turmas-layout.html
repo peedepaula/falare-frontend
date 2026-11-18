@@ -15,7 +15,7 @@
         @for (turma of turmas(); track turma.id){
             <app-unidade-turma
             [turma]="turma"
-            (click)="mostrarPopup()"
+            (click)="mostrarPopup(turma)"
             ></app-unidade-turma>
         }
         

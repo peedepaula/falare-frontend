@@ -11,7 +11,7 @@
             <div class="fundo-input">
                 <p class="nome-input">Selecionar o Aluno:</p>
                 <div class="fundo-input-real">
-                    <input type="text" class="input-nota" placeholder="EX: José Paulo" disabled [value]="alunoSelecionado?.nome">
+                    <input type="text" class="input-nota" placeholder="EX: José Paulo" disabled [value]="alunoSelecionado.nome">
                     <button class="icon-seta" (click)="mostrarBuscarAlunos=!mostrarBuscarAlunos">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
                     </button>
@@ -59,6 +59,6 @@
 
     <div class="botoes-footer">
         <button class="salvar apagar">Apagar</button>
-        <button class="salvar" (click)="cadastrarPagamento()">Salvar</button>
+        <button class="salvar" (click)="cadastrarAtualizarPagamento()">Salvar</button>
     </div>
 </section>

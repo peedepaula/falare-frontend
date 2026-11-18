@@ -20,7 +20,9 @@
             </app-card>
         </section>
         
-        <app-pagamentos-layout (mostrar)="visualizarPagamento($event)"></app-pagamentos-layout>
+        <app-pagamentos-layout
+        (mostrar)="visualizarPagamento($event)">
+        </app-pagamentos-layout>
 
         <app-botao-criar textoBotao="Cadastrar novo Pagamento" (click)="mostrarCadastrarPagamento=true"></app-botao-criar>
     </section>
@@ -29,7 +31,9 @@
         <section class="pop-up">
             <app-visualizar-pagamento
             (recarregarPagamentos)="recarregarPagamentos()"
-            (fechar)="fecharVisualizarPagamento()">
+            (fechar)="fecharVisualizarPagamento()"
+            [pagamentoSelecionado]="pagamentoSelecionado"
+            (mostrarEditarPagamento)="mostrarCadastrarPagamento=true">
             </app-visualizar-pagamento>
         </section>
     }
@@ -37,6 +41,8 @@
     @if(mostrarCadastrarPagamento){
         <section class="pop-up">
             <app-cadastrar-pagamento
+            (recarregarPagamentos)="recarregarPagamentos()"
+            [pagamentoSelecionado]="pagamentoSelecionado"
             (fechar)="mostrarCadastrarPagamento=false">
             </app-cadastrar-pagamento>
         </section>

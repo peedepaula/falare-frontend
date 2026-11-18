@@ -36,4 +36,5 @@ export class Pagamentos {
     this.pagamentosLayout()?.buscarPagamentos();
   }
 
+
 }

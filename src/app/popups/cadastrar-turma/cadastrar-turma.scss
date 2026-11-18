@@ -106,6 +106,11 @@
                         color: white;
                         background-color: v.$cor-tema;
                     }
+
+                    &.ativo{
+                        color: white;
+                        background-color: v.$cor-tema;
+                    }
                 }
             }
 
@@ -172,7 +177,7 @@
                     top: 35px;
                     width: 200px;
                     height: auto;
-                    max-height: 80px;
+                    max-height: 130px;
                     min-height: 60px;
                     overflow-y: auto;
                     background-color: white;
@@ -204,6 +209,38 @@
                             padding-bottom: 0;
                         }
                     }
+
+                        .aluno-unico{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            padding: 8px 16px;
+                            box-sizing: border-box;
+                            border: solid 1px v.$cor-tema;
+                            border-radius: 10px;     
+                        }
+
+                        .turma-unica{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 8px 16px;
+                            box-sizing: border-box;
+                            border: solid 1px v.$cor-tema;
+                            border-radius: 10px;
+                        }
+
+                        .nome-nivel{
+                            display: flex;
+                            flex-direction: column;
+                        }
+
+                        .nome-professor-idioma{
+                            font-size: 13px;
+                            font-weight: 550;
+                            color: v.$cor-tema;
+                        }
                 }
 
             }

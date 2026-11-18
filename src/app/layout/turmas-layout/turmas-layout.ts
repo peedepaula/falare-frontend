@@ -12,13 +12,17 @@ export class TurmasLayout implements OnInit {
   private turmaService = inject(TurmaService);
   @Output() mostrar = new EventEmitter<void>();
 
-  mostrarPopup(){
-    this.mostrar.emit();
+  mostrarPopup(turma: any){
+    this.mostrar.emit(turma);
   }
 
   turmas = signal<any[]>([]);
 
   ngOnInit(): void {
+    this.buscarTurmas();
+  }
+
+  buscarTurmas(){
     this.turmaService.buscarTurmas().subscribe({
       next: (res) => {
         this.turmas.set(res);

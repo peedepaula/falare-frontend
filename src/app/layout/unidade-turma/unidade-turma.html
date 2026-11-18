@@ -6,11 +6,15 @@
     </div>
     <hr class="linha-padrao" style="height: 45px;">
     <div class="dados">
-        <h5 class="nome-aluno">Prof: Pedro de Paula</h5>
-        <p class="detalhe-aluno">Idioma: Inglês | Nivel: 1</p>
-        <p class="detalhe-aluno"> Horário: 19:00 as 20:30</p>
-        <p class="detalhe-aluno">Dias: seg | ter | sex | dom</p>
+        <h5 class="nome-aluno">{{ turma.professorNome }}</h5>
+        <p class="detalhe-aluno">Idioma: {{ turma.idioma }} | Nivel: {{ turma.nivel }}</p>
+        <p class="detalhe-aluno"> Horário: {{ turma.horarioInicio }} - {{ turma.horarioFim }} </p>
+        <p class="detalhe-aluno">Dias:
+            @for (dia of turma.dias; track dia) {
+                <span>{{ dia }}</span>@if (!$last) { | }
+            }
+        </p>
     </div>
 
-    <p class="data">10/10/2026</p>
+    <p class="data">{{ turma.criadoEm }}</p>
 </button>

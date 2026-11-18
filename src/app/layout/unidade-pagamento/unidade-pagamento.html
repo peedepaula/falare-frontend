@@ -9,12 +9,12 @@
         <hr class="linha-padrao">
 
         <div class="dados">
-            <h5 class="nome-aluno">Pedro de Paula</h5>
-            <p class="status">Pago</p>
+            <h5 class="nome-aluno">{{ pagamento.alunoNome }}</h5>
+            <p class="status">{{ pagamento.status }}</p>
         </div>
     </div>
     
-    <h4 class="valor">R$: 250.50</h4>
+    <h4 class="valor">R$: {{ pagamento.valor }}</h4>
 
-    <h5 class="data">19/10/2026</h5>
+    <h5 class="data">{{ pagamento.criadoEm }}</h5>
 </button>

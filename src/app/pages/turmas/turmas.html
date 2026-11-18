@@ -20,20 +20,29 @@
             </app-card>
         </section>
         
-        <app-turmas-layout (mostrar)="mostrarVisualizarTurma=true"></app-turmas-layout>
+        <app-turmas-layout (mostrar)="visualizarTurma($event)"></app-turmas-layout>
 
         <app-botao-criar textoBotao="Cadastrar nova Turma" (click)="mostrarCadastrarTurma=true"></app-botao-criar>
     </section>
 
     @if (mostrarVisualizarTurma) {
         <section class="pop-up">
-            <app-visualizar-turma (fechar)="trocarVisualizarTurma()"></app-visualizar-turma>
+            <app-visualizar-turma
+            [turmaSelecionada]="turmaSelecionada"
+            (recarregarTurmas)="recarregarTurmas()"
+            (editarTurma)="mostrarCadastrarTurma=true"
+            (fechar)="fecharTurma()">
+            </app-visualizar-turma>
         </section>
     }
 
     @if (mostrarCadastrarTurma) {
         <section class="pop-up">
-            <app-cadastrar-turma (fechar)="mostrarCadastrarTurma=false"></app-cadastrar-turma>
+            <app-cadastrar-turma
+            [turmaSelecionada]="turmaSelecionada"
+            (recarregarTurmas)="recarregarTurmas()"
+            (fechar)="fecharEditarCadastrarTurma()">
+            </app-cadastrar-turma>
         </section>
     }
 </main>
