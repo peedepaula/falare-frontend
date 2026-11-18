@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { Card } from '../../layout/card/card';
 import { Nav } from '../../layout/nav/nav';
 import { Header } from '../../layout/header/header';
@@ -13,9 +13,27 @@ import { CadastrarProfessor } from '../../popups/cadastrar-professor/cadastrar-p
   styleUrl: './professores.scss',
 })
 export class Professores {
-  mostrarVisualizarCadastrarProfessor: boolean = false;
+  mostrarPopup = false;
+  professorSelecionado: any = null;
 
-  trocarVisualizarCadastrarProfessor(){
-    this.mostrarVisualizarCadastrarProfessor = !this.mostrarVisualizarCadastrarProfessor;
+  private professoresLayout = viewChild(ProfessoresLayout);
+
+  abrirCadastro() {
+    this.professorSelecionado = null;
+    this.mostrarPopup = true;
+  }
+
+  abrirEdicao(professor: any) {
+    this.professorSelecionado = professor;
+    this.mostrarPopup = true;
+  }
+
+  fecharPopup() {
+    this.mostrarPopup = false;
+    this.professorSelecionado = null;
+  }
+
+  recarregarProfessores() {
+    this.professoresLayout()?.carregarProfessores();
   }
 }

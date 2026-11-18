@@ -12,7 +12,7 @@
             @for (pagamento of pagamentos(); track pagamento.id) {
                 <app-unidade-pagamento
                 [pagamento]="pagamento"
-                (click)="mostrarPopup()"
+                (click)="mostrarPopup(pagamento)"
                 >
                 </app-unidade-pagamento>
             }

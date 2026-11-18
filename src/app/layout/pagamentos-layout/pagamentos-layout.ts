@@ -12,13 +12,17 @@ export class PagamentosLayout implements OnInit {
   private PagamentoService = inject(PagamentoService);
   @Output() mostrar = new EventEmitter<void>();
 
-  mostrarPopup(){
-    this.mostrar.emit();
+  mostrarPopup(pagamento: any){
+    this.mostrar.emit(pagamento);
   }
 
   pagamentos = signal<any[]>([]);
 
   ngOnInit(): void {
+    this.buscarPagamentos();
+  }
+
+  buscarPagamentos(){
     this.PagamentoService.buscarPagamentos().subscribe({
       next: (res) => {
         this.pagamentos.set(res);

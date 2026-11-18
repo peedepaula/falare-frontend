@@ -12,13 +12,17 @@ export class MatriculasLayout implements OnInit {
   private MatriculaService = inject(MatriculaService);
   @Output() mostrar = new EventEmitter<void>();
 
-  mostrarPopup(){
-    this.mostrar.emit();
+  mostrarPopup(matricula: any){
+    this.mostrar.emit(matricula);
   }
 
   matriculas = signal<any[]>([]);
 
   ngOnInit(): void {
+    this.buscarMatriculas();
+  }
+
+  buscarMatriculas() {
     this.MatriculaService.buscarMatriculas().subscribe({
       next: (res) => {
         this.matriculas.set(res);

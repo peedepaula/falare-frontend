@@ -1,6 +1,6 @@
 <section class="pop-up-corpo">
     <header class="header-popup">
-        <h5 class="titulo-popup">Cadastrar professor</h5>
+        <h5 class="titulo-popup">{{ editando ? 'Editar professor' : 'Cadastrar professor' }}</h5>
         <button class="icone-x" (click)="fecharPopup()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
         </button>
@@ -10,22 +10,24 @@
         <div class="dados-cadastro">
             <div class="fundo-input">
                 <p class="nome-input">Nome:</p>
-                <input type="text" class="input-nota" placeholder="EX: José Paulo">
+                <input type="text" class="input-nota" placeholder="EX: José Paulo" [(ngModel)]="nome">
             </div>
             <div class="fundo-input">
                 <p class="nome-input">E-mail:</p>
-                <input type="text" class="input-nota" placeholder="EX: seu@email.com">
+                <input type="text" class="input-nota" placeholder="EX: seu@email.com" [(ngModel)]="email">
             </div>
             <div class="fundo-input">
                 <p class="nome-input">Senha:</p>
-                <input type="text" class="input-nota" placeholder="EX: aJHhG783#@">
+                <input type="text" class="input-nota" [placeholder]="editando ? 'Deixe vazio para manter a atual' : 'EX: aJHhG783#@'" [(ngModel)]="senha">
             </div>
         </div>
 
     </div>
     <div class="botoes-footer">
-        <button class="salvar apagar">Apagar</button>
-        <button class="salvar">Salvar</button>
+        @if (editando){
+            <button class="salvar apagar" (click)="apagar()" [disabled]="carregando()">Apagar</button>
+        }
+        <button class="salvar" (click)="salvar()" [disabled]="carregando()">Salvar</button>
     </div>
 
 </section>

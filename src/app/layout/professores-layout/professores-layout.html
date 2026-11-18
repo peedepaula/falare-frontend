@@ -16,7 +16,7 @@
             @for (professor of professores(); track professor.id) {
                 <app-unidade-professor
                 [professor]="professor"
-                (click)="mostrarPopup()"
+                (click)="mostrarPopup(professor)"
                 ></app-unidade-professor>
             }
         }

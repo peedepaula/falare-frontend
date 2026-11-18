@@ -16,7 +16,7 @@
             @for (matricula of matriculas(); track matricula.id) {
                 <app-unidade-matricula
                 [matricula]="matricula"
-                (click)="mostrarPopup()"
+                (click)="mostrarPopup(matricula)"
                 ></app-unidade-matricula>
             }
         }

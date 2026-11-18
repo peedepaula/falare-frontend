@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, viewChild } from '@angular/core';
 import { Header } from '../../layout/header/header';
 import { Nav } from '../../layout/nav/nav';
 import { Card } from '../../layout/card/card';
@@ -6,6 +6,7 @@ import { PagamentosLayout } from '../../layout/pagamentos-layout/pagamentos-layo
 import { BotaoCriar } from '../../layout/botao-criar/botao-criar';
 import { VisualizarPagamento } from '../../popups/visualizar-pagamento/visualizar-pagamento';
 import { CadastrarPagamento } from '../../popups/cadastrar-pagamento/cadastrar-pagamento';
+import { PagamentoService } from '../../core/services/pagamento.service';
 
 @Component({
   selector: 'app-pagamentos',
@@ -14,11 +15,25 @@ import { CadastrarPagamento } from '../../popups/cadastrar-pagamento/cadastrar-p
   styleUrl: './pagamentos.scss',
 })
 export class Pagamentos {
+  private pagamentosLayout = viewChild(PagamentosLayout);
+
   mostrarVisualizarPagamento: boolean = false;
   mostrarCadastrarPagamento: boolean = false;
 
-  trocarVisualizarPagamento(){
-    this.mostrarVisualizarPagamento = !this.mostrarVisualizarPagamento;
+  pagamentoSelecionado: any;
+
+  visualizarPagamento(pagamento: any){
+    this.mostrarVisualizarPagamento = true;
+    this.pagamentoSelecionado = pagamento;
+  }
+
+  fecharVisualizarPagamento(){
+    this.mostrarVisualizarPagamento = false;
+    this.pagamentoSelecionado = null;
+  }
+
+  recarregarPagamentos(){
+    this.pagamentosLayout()?.buscarPagamentos();
   }
 
 }

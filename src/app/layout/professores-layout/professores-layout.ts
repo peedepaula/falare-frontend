@@ -12,13 +12,17 @@ export class ProfessoresLayout implements OnInit {
   private ProfessorService = inject(ProfessorService);
   @Output() mostrar = new EventEmitter<void>();
 
-  mostrarPopup(){
-    this.mostrar.emit();
+  mostrarPopup(professor: any){
+    this.mostrar.emit(professor);
   }
 
   professores = signal<any[]>([]);
 
   ngOnInit(): void {
+    this.carregarProfessores();
+  }
+
+  carregarProfessores(){
     this.ProfessorService.buscarProfessores().subscribe({
       next: (res) => {
         this.professores.set(res);

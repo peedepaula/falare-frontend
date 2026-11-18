@@ -13,13 +13,17 @@ export class AulasLayout implements OnInit {
   private AulaService = inject(AulaService);
   @Output() mostrar = new EventEmitter<void>();
 
-  mostrarPopup(){
-    this.mostrar.emit();
+  mostrarPopup(aula: any){
+    this.mostrar.emit(aula);
   }
 
   aulas = signal<any[]>([]);
 
   ngOnInit(): void {
+    this.carregarAulas();
+  }
+
+  carregarAulas() {
     this.AulaService.buscarAulas().subscribe({
       next: (res) => {
         this.aulas.set(res);

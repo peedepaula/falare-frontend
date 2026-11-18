@@ -10,18 +10,35 @@
         <div class="fundo-input">
             <p class="nome-input">Selecione a turma:</p>
             <div class="fundo-input-real">
-                <input type="text" class="input-nota" placeholder="EX: Turma 32" disabled>
+                <input type="text" class="input-nota" placeholder="EX: Turma 32" disabled [value]="turmaSelecionada?.idioma || ''">
+                
                 <button class="icon-seta" (click)="mostrarTrumas=!mostrarTrumas">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
                 </button>
-
+                
                 @if (mostrarTrumas) {
                     <div class="fundo-conteudo-aberto" (click)="mostrarTrumas=!mostrarTrumas">
-                        
+                        @if(turmas().length > 0){
+                            @for (turma of turmas(); track turma.id) {
+                                <div class="turma-unica" (click)="turmaSelecionada=turma">
+                                    <div class="nome-nivel">
+                                        <h5 class="nome-professor-idioma">{{ turma.professorNome }}</h5>
+                                        <p class="nivel">{{ turma.nivel }}</p>
+                                    </div>
+                                    <h5 class="nome-professor-idioma">{{ turma.idioma }}</h5>
+                                </div>
+                            }
+                        }
+                        @else {
+                            <p class="nao-tem">Não tem Turmas</p>
+                        }
                     </div>
                 }
             </div>
+            @if(turmaSelecionada.professorNome){
+                <p class="detalhe">Professor: <span class="laranja">{{ turmaSelecionada?.professorNome }}</span></p>
+            }
         </div>
     </div>
-    <button class="salvar">Criar</button>
+    <button class="salvar" (click)="cadastrarAula()">Criar</button>
 </section>

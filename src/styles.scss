@@ -8,6 +8,18 @@
     font-weight: 400;
 }
 
+.nao-tem{
+    font-size: 14px;
+    font-weight: 500;
+    color: v.$cor-tema;
+    background-color: v.$cor-fundo-branco;
+    border: dotted 1px v.$cor-tema;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 32px;
+    border-radius: 10px;
+}
+
 ::placeholder{
     color: #999999a5;
     font-size: 11px;

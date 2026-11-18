@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { Card } from '../../layout/card/card';
 import { Nav } from '../../layout/nav/nav';
 import { Header } from '../../layout/header/header';
@@ -14,11 +14,24 @@ import { CadastrarAula } from '../../popups/cadastrar-aula/cadastrar-aula';
   styleUrl: './aulas.scss',
 })
 export class Aulas {
+  private aulasLayout = viewChild(AulasLayout);
+
   mostrarVisualizarAula: boolean = false;
   mostrarCadastrarAula: boolean = false;
+  aulaSelecionada: any = null;
 
-  trocarVisualizarAula(){
-    this.mostrarVisualizarAula = !this.mostrarVisualizarAula;
+  abrirVisualizarAula(aula: any) {
+    this.aulaSelecionada = aula;
+    this.mostrarVisualizarAula = true;
+  }
+
+  fecharVisualizarAula() {
+    this.mostrarVisualizarAula = false;
+    this.aulaSelecionada = null;
+  }
+
+  recarregarAulas(){
+    this.aulasLayout()?.carregarAulas();
   }
 
 }

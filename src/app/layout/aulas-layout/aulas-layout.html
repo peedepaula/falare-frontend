@@ -15,7 +15,7 @@
         @for (aula of aulas(); track aula.id) {
             <app-unidade-aula
             [aula]="aula"
-            (click)="mostrarPopup()"
+            (click)="mostrarPopup(aula)"
             ></app-unidade-aula>
         }
         
