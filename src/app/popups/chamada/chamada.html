@@ -12,23 +12,45 @@
             <p class="dados-indice">Presença</p>
         </header>
         <div class="lista-alunos">
-            @for (item of [].constructor(12); track $index) {
-                <div class="aluno">
-                    <div class="nome-foto">
-                        <div class="foto">
-                            <div class="icon-usuario">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+            @if(alunos().length > 0){
+                @for (aluno of alunos(); track aluno.matriculaId) {
+                    <div class="aluno">
+                        <div class="nome-foto">
+                            <div class="foto">
+                                <div class="icon-usuario">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                                </div>
                             </div>
+                            <h4 class="nome">{{ aluno.nome }}</h4>
                         </div>
-                        <h4 class="nome">Nome do Aluno</h4>
+        
+                        @if (!estaPresente(aluno.matriculaId)) {
+                            <label>
+                                <input type="checkbox"
+                                    [disabled]="jaTemChamada()"
+                                    [checked]="atestados()[aluno.matriculaId] ?? false"
+                                    (change)="alternarAtestado(aluno.matriculaId, $any($event.target).checked)">
+                                Atestado
+                            </label>
+                        }
+
+                        <input type="checkbox" class="presenca"
+                            [disabled]="jaTemChamada()"
+                            [checked]="estaPresente(aluno.matriculaId)"
+                            (change)="alternarPresenca(aluno.matriculaId, $any($event.target).checked)">
                     </div>
-    
-                    <input type="checkbox" class="presenca">
-                </div>
+                }
+            }
+            @else {
+                <p class="nao-tem">Não tem Alunos</p>
             }
         </div>
 
-        <button class="salvar">Salvar</button>
+        @if(!jaTemChamada()){
+        <button class="salvar"
+            [disabled]="salvando() || carregando() || jaTemChamada()"
+            (click)="salvarChamada()">Salvar</button>
+        }
     </div>
 
 </section>

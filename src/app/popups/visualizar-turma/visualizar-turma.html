@@ -13,7 +13,7 @@
                 <p class="nome">Professor:<span class="dado">{{ turmaSelecionada.professorNome }}</span></p>
                 <p class="nome">Idioma:<span class="dado">{{ turmaSelecionada.idioma }}</span></p>
                 <p class="nome">Nível:<span class="dado">{{ turmaSelecionada.nivel }}</span></p>
-                <p class="nome">Criado em:<span class="dado">{{ turmaSelecionada.criadoEm }}</span></p>
+                <p class="nome">Criado em:<span class="dado">{{ formatarData(turmaSelecionada.criadoEm) }}</span></p>
             </div>
         </div>
         

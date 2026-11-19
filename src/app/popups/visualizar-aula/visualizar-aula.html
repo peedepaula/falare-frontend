@@ -17,7 +17,7 @@
             @if(sessaoTela === "dados"){
                 <div class="conteudo-sessao-aberta">
                     <p class="nome">Professor:<span class="dado">{{ aula.professorNome }}</span></p>
-                    <p class="nome">Data:<span class="dado">{{ aula.data }}</span></p>
+                    <p class="nome">Data:<span class="dado">{{ formatarData(aula.data) }}</span></p>
                     <p class="nome">Horario:<span class="dado">{{ aula.horarioInicio }} - {{ aula.horarioFim }}</span></p>
                     <p class="nome">Idioma:<span class="dado">{{ aula.idioma }}</span></p>
                     <p class="nome">Nível:<span class="dado">{{ aula.nivel }}</span></p>
@@ -54,6 +54,12 @@
         </div>
     </div>
     @if(mostrarChamada){
-        <app-chamada (fechar)="mostrarChamada=false"></app-chamada>
+        <app-chamada
+        [alunos]="alunos()"
+        [turmaId]="aula.turmaId"
+        [data]="aula.data"
+        (recarregarAulas)="recarregarAulas()"
+        (fechar)="mostrarChamada=false">
+        </app-chamada>
     }
 </section>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
 import { PagamentoService } from '../../core/services/pagamento.service';
+import { formatarData } from '../../utils/formatadores';
 
 @Component({
   selector: 'app-visualizar-pagamento',
@@ -9,6 +10,8 @@ import { PagamentoService } from '../../core/services/pagamento.service';
 })
 export class VisualizarPagamento implements OnInit{
   private pagamentoService = inject(PagamentoService);
+
+  formatarData = formatarData;
 
   @Input() pagamentoSelecionado: any;
 

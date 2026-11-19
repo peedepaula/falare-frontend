@@ -1,8 +1,10 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output, output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output, output, signal, viewChild } from '@angular/core';
 import { UnidadeAluno } from '../../layout/unidade-aluno/unidade-aluno';
 import { Chamada } from '../chamada/chamada';
 import { AulaService } from '../../core/services/aula.service';
 import { AlunoService } from '../../core/services/aluno.service';
+import { AulasLayout } from '../../layout/aulas-layout/aulas-layout';
+import { formatarData } from '../../utils/formatadores';
 
 @Component({
   selector: 'app-visualizar-aula',
@@ -13,6 +15,10 @@ import { AlunoService } from '../../core/services/aluno.service';
 export class VisualizarAula implements OnInit{
   private AulaService = inject(AulaService)
   private alunoService = inject(AlunoService)
+
+  formatarData = formatarData;
+
+  private aulasLayout = viewChild(AulasLayout);
 
   sessaoTela: string = "dados";
   mostrarChamada: boolean = false;
@@ -63,6 +69,10 @@ export class VisualizarAula implements OnInit{
         console.log('Erro ao tentar buscar Alunos');
       }
     })
+  }
+
+  recarregarAulas(){
+    this.aulasLayout()?.carregarAulas();
   }
 
 }

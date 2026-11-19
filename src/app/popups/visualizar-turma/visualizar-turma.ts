@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '
 import { UnidadeAluno } from '../../layout/unidade-aluno/unidade-aluno';
 import { TurmaService } from '../../core/services/turma.service';
 import { AlunoService } from '../../core/services/aluno.service';
+import { formatarData } from '../../utils/formatadores';
 
 @Component({
   selector: 'app-visualizar-turma',
@@ -12,6 +13,8 @@ import { AlunoService } from '../../core/services/aluno.service';
 export class VisualizarTurma implements OnInit{
   private turmaService = inject(TurmaService);
   private alunoService = inject(AlunoService);
+
+  formatarData = formatarData;
 
   @Input() turmaSelecionada: any;
 

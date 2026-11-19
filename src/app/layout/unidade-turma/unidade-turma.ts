@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { formatarData } from '../../utils/formatadores';
 
 @Component({
   selector: 'app-unidade-turma',
@@ -8,4 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class UnidadeTurma {
   @Input() turma: any;
+
+  formatarData = formatarData;
 }
