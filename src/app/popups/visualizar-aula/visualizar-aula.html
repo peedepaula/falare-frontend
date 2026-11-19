@@ -16,10 +16,11 @@
         <div class="sessao-aberta">
             @if(sessaoTela === "dados"){
                 <div class="conteudo-sessao-aberta">
-                    <p class="nome">Data:<span class="dado">10/10/2026</span></p>
-                    <p class="nome">Criado em:<span class="dado">10/10/2026</span></p>
-                    <p class="nome">Idioma:<span class="dado">Inglês</span></p>
-                    <p class="nome">Nível:<span class="dado">1</span></p>
+                    <p class="nome">Professor:<span class="dado">{{ aula.professorNome }}</span></p>
+                    <p class="nome">Data:<span class="dado">{{ aula.data }}</span></p>
+                    <p class="nome">Horario:<span class="dado">{{ aula.horarioInicio }} - {{ aula.horarioFim }}</span></p>
+                    <p class="nome">Idioma:<span class="dado">{{ aula.idioma }}</span></p>
+                    <p class="nome">Nível:<span class="dado">{{ aula.nivel }}</span></p>
 
                     <button class="botao-chamada" (click)="mostrarChamada=true">Fazer chamada</button>
                 </div>
@@ -35,8 +36,15 @@
                     </div>
 
                     <div class="lista-alunos">
-                        @for (item of [].constructor(70); track $index){
-                            <app-unidade-aluno></app-unidade-aluno>
+                        @if(alunos().length > 0){
+                            @for (aluno of alunos(); track aluno.id){
+                                <app-unidade-aluno
+                                [aluno]="aluno"
+                                ></app-unidade-aluno>
+                            }
+                        }
+                        @else{
+                            <p class="nao-tem">Não tem Alunos</p>
                         }
                     </div>
                 </div>

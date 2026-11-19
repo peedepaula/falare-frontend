@@ -1,6 +1,7 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
 import { UnidadeAluno } from '../../layout/unidade-aluno/unidade-aluno';
 import { TurmaService } from '../../core/services/turma.service';
+import { AlunoService } from '../../core/services/aluno.service';
 
 @Component({
   selector: 'app-visualizar-turma',
@@ -8,8 +9,9 @@ import { TurmaService } from '../../core/services/turma.service';
   templateUrl: './visualizar-turma.html',
   styleUrl: './visualizar-turma.scss',
 })
-export class VisualizarTurma {
+export class VisualizarTurma implements OnInit{
   private turmaService = inject(TurmaService);
+  private alunoService = inject(AlunoService);
 
   @Input() turmaSelecionada: any;
 
@@ -17,12 +19,18 @@ export class VisualizarTurma {
   @Output() recarregarTurmas = new EventEmitter<void>();
   @Output() editarTurma = new EventEmitter<void>();
 
+  podeVer: boolean = localStorage.getItem('tipoUsuario') === 'Secretaria';
+
   fecharPopup(){
     this.fechar.emit();
   }
 
   mostrarEditarTurma(){
     this.editarTurma.emit()
+  }
+
+  ngOnInit(): void {
+    this.buscarAlunos();
   }
 
   deletarTurma(){
@@ -35,6 +43,22 @@ export class VisualizarTurma {
       },
       error: (err) => {
         console.log('Erro ao tentar deletar a turma', err)
+      }
+    })
+  }
+
+  alunos = signal<any[]>([]);
+
+  buscarAlunos(){
+    if(!this.turmaSelecionada.id)return;
+
+    this.alunoService.buscarAlunosPorTurma(this.turmaSelecionada.id).subscribe({
+      next: (res) => {
+        this.alunos.set(res);
+        console.log('Alunos buscado com sucesso');
+      },
+      error: (err) => {
+        console.log('Erro ao tentar buscar Alunos');
       }
     })
   }

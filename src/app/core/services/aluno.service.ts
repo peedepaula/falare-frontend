@@ -30,6 +30,14 @@ export class AlunoService {
     return this.http.get(`${this.api}/alunos`);
   }
 
+  buscarAlunosPorTurma(turmaId: string): Observable<any> {
+    return this.http.get(`${this.api}/alunos/por-turma/${turmaId}`);
+  }
+
+  buscarAlunoCompleto(alunoId: string): Observable<any> {
+    return this.http.get(`${this.api}/aluno/completo/${alunoId}`);
+  }
+
   cadastrarAluno(aluno: CadastrarAlunoRequest): Observable<any> {
     return this.http.post(`${this.api}/aluno`, aluno)
   }
@@ -40,5 +48,17 @@ export class AlunoService {
 
   apagarAluno(id: number): Observable<any> {
     return this.http.delete(`${this.api}/aluno/${id}`);
+  }
+
+
+  // Para usuario tipo Aluno
+  buscarAlunoFrequencia(): Observable<any> {
+    return this.http.get(`${this.api}/aluno/frequencia`);
+  }
+  buscarAlunoNota(): Observable<any> {
+    return this.http.get(`${this.api}/aluno/nota`);
+  }
+  buscarAlunoFinanceiro(): Observable<any> {
+    return this.http.get(`${this.api}/aluno/financeiro`);
   }
 }

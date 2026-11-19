@@ -14,44 +14,48 @@
         </div>
 
         <div class="sessao-aberta">
-            @if(sessaoTela === "dados"){
-                <div class="conteudo-sessao-aberta">
-                    <p class="nome">Nome:<span class="dado">Nomee Exemplo</span></p>
-                    <p class="nome">E-mail:<span class="dado">seu@gmail.com</span></p>
-                    <p class="nome">Telefone:<span class="dado">(11) 98888-8888</span></p>
-                    <p class="nome">Faltas:<span class="dado">0</span></p>
-                    <p class="nome">Status:<span class="dado">Em andamento</span></p>
-                </div>
-            }
-            @else if(sessaoTela === "matricula"){
-                <div class="conteudo-sessao-aberta">
-                    <p class="nome">Turma:<span class="dado">Ing 4</span></p>
-                    <p class="nome">Idioma:<span class="dado">Inglês</span></p>
-                    <p class="nome">Nível:<span class="dado">1</span></p>
-                </div>
-            }
-            @else{
-                <div class="conteudo-sessao-aberta">
-                    <div class="fundo-input">
-                        <p class="nome-input">P1:</p>
-                        <input type="text" class="input-nota" placeholder="EX: 10.0">
+            @if (aluno(); as a) {
+                @let m = a.matriculas[0];
+
+                @if (sessaoTela === 'dados') {
+                    <div class="conteudo-sessao-aberta">
+                        <p class="nome">Nome:<span class="dado">{{ a.nome }}</span></p>
+                        <p class="nome">E-mail:<span class="dado">{{ a.email }}</span></p>
+                        <p class="nome">Telefone:<span class="dado">{{ a.telefone }}</span></p>
+                        <p class="nome">Faltas:<span class="dado">{{ m?.faltas }}</span></p>
+                        <p class="nome">Status:<span class="dado">{{ m?.status }}</span></p>
                     </div>
-                    <div class="fundo-input">
-                        <p class="nome-input">P2:</p>
-                        <input type="text" class="input-nota" placeholder="EX: 10.0">
+                } @else if (sessaoTela === 'matricula') {
+                    <div class="conteudo-sessao-aberta">
+                        <p class="nome">Idioma:<span class="dado">{{ m?.idioma }}</span></p>
+                        <p class="nome">Nível:<span class="dado">{{ m?.nivel }}</span></p>
                     </div>
-                    <div class="fundo-input">
-                        <p class="nome-input">Trabalho:</p>
-                        <input type="text" class="input-nota" placeholder="EX: 10.0">
+                } @else {
+                    <div class="conteudo-sessao-aberta">
+                        <div class="fundo-input">
+                            <p class="nome-input">P1:</p>
+                            <input type="text" class="input-nota" placeholder="EX: 10.0" [(ngModel)]="p1">
+                        </div>
+                        <div class="fundo-input">
+                            <p class="nome-input">P2:</p>
+                            <input type="text" class="input-nota" placeholder="EX: 10.0" [(ngModel)]="p2">
+                        </div>
+                        <div class="fundo-input">
+                            <p class="nome-input">Trabalho:</p>
+                            <input type="text" class="input-nota" placeholder="EX: 10.0" [(ngModel)]="trabalho">
+                        </div>
+                        <button class="botao-nota" (click)="salvarNotas()">Salvar nota</button>
                     </div>
-                </div>
+                }
             }
         </div>
     </div>
 
-    <div class="botoes-final">
-        <button class="botao-apagar" (click)="mostrarApagar()">Apagar</button>
-        <button class="botao-editar" (click)="mostrarEditar()">Editar</button>
-    </div>
+    @if(podeVer){
+        <div class="botoes-final">
+            <button class="botao-apagar" (click)="mostrarApagar()">Apagar</button>
+            <button class="botao-editar" (click)="mostrarEditar()">Editar</button>
+        </div>
+    }
 
 </section>

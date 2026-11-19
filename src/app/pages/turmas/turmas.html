@@ -22,7 +22,9 @@
         
         <app-turmas-layout (mostrar)="visualizarTurma($event)"></app-turmas-layout>
 
-        <app-botao-criar textoBotao="Cadastrar nova Turma" (click)="mostrarCadastrarTurma=true"></app-botao-criar>
+        @if(podeVer){
+            <app-botao-criar textoBotao="Cadastrar nova Turma" (click)="mostrarCadastrarTurma=true"></app-botao-criar>
+        }
     </section>
 
     @if (mostrarVisualizarTurma) {

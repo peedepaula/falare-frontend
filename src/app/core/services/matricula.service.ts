@@ -15,6 +15,12 @@ export interface AtualizarMatricula{
     trabalho?: number;
 }
 
+export interface NotasMatricula{
+    p1?: number;
+    p2?: number;
+    trabalho?: number;
+}
+
 export type StatusMatricula =
   | 'ativa'
   | 'concluida'
@@ -40,6 +46,10 @@ export class MatriculaService {
     }
 
     atualizarMatricula(id: Number, dados: AtualizarMatricula): Observable<any> {
+        return this.http.patch(`${this.api}/matricula/${id}`, dados)
+    }
+
+    notasMatricula(id: string, dados: NotasMatricula): Observable<any> {
         return this.http.patch(`${this.api}/matricula/${id}`, dados)
     }
 

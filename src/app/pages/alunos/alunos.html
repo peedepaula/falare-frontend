@@ -21,16 +21,19 @@
         </section>
         
         <app-alunos-layout (mostrar)="abrirVisualizar($event)"></app-alunos-layout>
-        <app-botao-criar textoBotao="Cadastrar novo Aluno" (click)="abrirCadastro()"></app-botao-criar>
+        @if(podeVer){
+            <app-botao-criar textoBotao="Cadastrar novo Aluno" (click)="abrirCadastro()"></app-botao-criar>
+        }
     </section>
 
     @if (mostrarVisualizarAluno) {
         <section class="pop-up">
             <app-visualizar-aluno
-                [aluno]="alunoSelecionado"
+                [alunoSelecionado]="alunoSelecionado"
                 (fechar)="fecharVisualizar()"
                 (editar)="abrirEdicao()"
-                (apagar)="abrirApagar()">
+                (apagar)="abrirApagar()"
+                (recarregarAlunos)="recarregarAlunos()">
             </app-visualizar-aluno>
         </section>
     }

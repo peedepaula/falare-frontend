@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, viewChild, ViewChild } from '@angular/core';
 import { Header } from '../../layout/header/header';
 import { Nav } from '../../layout/nav/nav';
 import { Card } from '../../layout/card/card';
@@ -16,8 +16,10 @@ import { AlunoService } from '../../core/services/aluno.service';
   styleUrl: './alunos.scss',
 })
 export class Alunos {
-  @ViewChild(AlunosLayout) alunosLayout!: AlunosLayout;
   private alunoService = inject(AlunoService);
+  private alunoLayout = viewChild(AlunosLayout);
+
+  podeVer: boolean = localStorage.getItem('tipoUsuario') === 'Secretaria';
 
   mostrarVisualizarAluno: boolean = false;
   mostrarCadastrarAluno: boolean = false;
@@ -44,7 +46,7 @@ export class Alunos {
   }
 
   aoSalvar() {
-    this.alunosLayout.buscarAlunos();
+    this.recarregarAlunos();
   }
 
   abrirApagar() {
@@ -65,12 +67,16 @@ export class Alunos {
     this.alunoService.apagarAluno(id).subscribe({
       next: () => {
         this.alunoSelecionado = null;
-        this.alunosLayout.buscarAlunos();
+        this.recarregarAlunos();
       },
       error: (err) => {
         console.error('Erro ao apagar aluno:', err);
       }
     });
+  }
+
+  recarregarAlunos(){
+    this.alunoLayout()?.buscarAlunos();
   }
 
 }

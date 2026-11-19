@@ -7,20 +7,24 @@
     </header>
 
     <div class="conteudo-popup">
-        <div class="status">
-            <p class="sessao">Status atual:</p>
-            <h3 class="status-real">Pago!</h3>
-
-        </div>
-
-        <div class="historico">
-            <p class="sessao">Histórico:</p>
-            <div class="lista-transacoes">
-                @for (item of [].constructor(30); track $index) {
-                    <app-unidade-pagamento></app-unidade-pagamento>
-                }
+        @if (dadosFinanceiro(); as f){
+            <div class="status">
+                <p class="sessao">Status atual:</p>
+                <h3 class="status-real">{{ f.emAberto > 0? 'Pendente' : 'Pago'  }}!</h3>
+    
             </div>
-        </div>
+    
+            <div class="historico">
+                <p class="sessao">Histórico:</p>
+                <div class="lista-transacoes">
+                    @for (pagamento of f.historico; track pagamento.id) {
+                        <app-unidade-pagamento
+                        [pagamento]="pagamento"
+                        ></app-unidade-pagamento>
+                    }
+                </div>
+            </div>
+        }
     </div>
 
 </section>

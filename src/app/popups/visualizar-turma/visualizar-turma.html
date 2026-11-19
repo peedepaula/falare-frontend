@@ -26,17 +26,26 @@
                 <input type="text" class="pesquisa-input" placeholder="Pesquise pelo dados do aluno...">
             </div>
 
-            <!-- <div class="lista-alunos">
-                @for (item of [].constructor(70); track $index) {
-                    <app-unidade-aluno></app-unidade-aluno>
+            <div class="lista-alunos">
+                @if(alunos().length > 0){
+                    @for (aluno of alunos(); track aluno.id) {
+                        <app-unidade-aluno
+                        [aluno]="aluno"
+                        ></app-unidade-aluno>
+                    }
                 }
-            </div> -->
+                @else {
+                    <p class="nao-tem">Não tem Alunos</p>
+                }
+            </div>
         </div>
     </div>
 
-    <div class="botoes-footer">
-        <button class="salvar apagar" (click)="deletarTurma()">Apagar</button>
-        <button class="salvar" (click)="mostrarEditarTurma()">Editar</button>
-    </div>
+    @if(podeVer){
+        <div class="botoes-footer">
+            <button class="salvar apagar" (click)="deletarTurma()">Apagar</button>
+            <button class="salvar" (click)="mostrarEditarTurma()">Editar</button>
+        </div>
+    }
 
 </section>

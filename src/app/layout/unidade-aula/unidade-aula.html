@@ -6,9 +6,9 @@
     </div>
     <hr class="linha-padrao">
     <div class="dados">
-        <h5 class="nome-aluno">Prof: Pedro de Paula</h5>
-        <p class="detalhe-aluno">Idioma: Inglês | Nivel: 1 | Horário: 19:00</p>
+        <h5 class="nome-aluno">Prof: {{ aula.professorNome }}</h5>
+        <p class="detalhe-aluno">Idioma: {{ aula.idioma }} | Nivel: {{ aula.nivel }} | Horário: {{ aula.horarioInicio }}</p>
     </div>
 
-    <p class="data">10/10/2026</p>
+    <p class="data">{{ aula.data }}</p>
 </button>

@@ -19,6 +19,8 @@ export class Turmas {
   mostrarVisualizarTurma: boolean = false;
   mostrarCadastrarTurma: boolean = false;
 
+  podeVer: boolean = localStorage.getItem('tipoUsuario') === 'Secretaria';
+
   turmaSelecionada: any;
 
   visualizarTurma(turma: any){

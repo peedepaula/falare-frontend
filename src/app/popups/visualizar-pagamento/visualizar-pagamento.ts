@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
 import { PagamentoService } from '../../core/services/pagamento.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { PagamentoService } from '../../core/services/pagamento.service';
   templateUrl: './visualizar-pagamento.html',
   styleUrl: './visualizar-pagamento.scss',
 })
-export class VisualizarPagamento {
+export class VisualizarPagamento implements OnInit{
   private pagamentoService = inject(PagamentoService);
 
   @Input() pagamentoSelecionado: any;
@@ -25,6 +25,10 @@ export class VisualizarPagamento {
     this.mostrarEditarPagamento.emit();
   }
 
+  ngOnInit(): void {
+    this.buscarPagamentoDetalhe();
+  }
+
   deletarPagamento(){
     if(!this.pagamentoSelecionado.id)return;
 
@@ -39,5 +43,20 @@ export class VisualizarPagamento {
       }
     }
     )
+  }
+
+  pagamento = signal<any>(null);
+
+  buscarPagamentoDetalhe(){
+    if(!this.pagamentoSelecionado.id)return;
+    this.pagamentoService.buscarPagamento(this.pagamentoSelecionado.id).subscribe({
+      next: (res) => {
+        this.pagamento.set(res);
+        console.log('Pagamento buscado com sucesso');
+      },
+      error: (err) => {
+        console.log('Erro ao tentar buscar Pagamento detalhado', err);
+      }
+    })
   }
 }
