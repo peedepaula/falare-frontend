@@ -1,0 +1,40 @@
+<div class="container-popups">
+    @for (p of popup.popups(); track p.id){
+        <section class="pop-up-global"
+            [class.erro]="p.tipo"
+            [class.acerto]="p.tipo==='acerto'"
+            [class.informacao]="p.tipo==='informacao'">
+        
+            <div class="icone-pop-up"
+            [class.erro]="p.tipo"
+            [class.acerto]="p.tipo==='acerto'"
+            [class.informacao]="p.tipo==='informacao'">
+                @if(p.tipo === 'erro'){
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-alert-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                }
+        
+                @else if (p.tipo === 'acerto') {
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-circle-check"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M9 12l2 2l4 -4" /></svg>
+                }
+        
+                @else if (p.tipo === 'informacao') {
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-alert-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                }
+            </div>
+        
+            <div class="textos"
+                [class.erro]="p.tipo"
+                [class.acerto]="p.tipo==='acerto'"
+                [class.informacao]="p.tipo==='informacao'">
+                
+                <h5 class="titulo-popup"
+                    [class.erro]="p.tipo"
+                    [class.acerto]="p.tipo==='acerto'"
+                    [class.informacao]="p.tipo==='informacao'">
+                    {{ p.titulo }}
+                </h5>
+                <p class="descricao-popup">{{ p.descricao }}</p>
+            </div>
+        </section>
+    }
+</div>

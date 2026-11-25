@@ -5,6 +5,7 @@ import { AulaService } from '../../core/services/aula.service';
 import { AlunoService } from '../../core/services/aluno.service';
 import { AulasLayout } from '../../layout/aulas-layout/aulas-layout';
 import { formatarData } from '../../utils/formatadores';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-visualizar-aula',
@@ -13,6 +14,8 @@ import { formatarData } from '../../utils/formatadores';
   styleUrl: './visualizar-aula.scss',
 })
 export class VisualizarAula implements OnInit{
+  private popup = inject(PopupService);
+  
   private AulaService = inject(AulaService)
   private alunoService = inject(AlunoService)
 
@@ -49,10 +52,12 @@ export class VisualizarAula implements OnInit{
       next: () => {
         this.aulaDeletada.emit();
         this.fecharPopup();
-        console.log('Aula criada')
+        console.log('Aula deletada')
+        this.popup.erro('Aula deletada com sucesso.')
       },
       error: (err) => {
-        console.error('Erro ao tentar deletar Aula')
+        console.error('Erro ao tentar deletar Aula', err)
+        this.popup.erro('Erro ao tentar Deletar Aula.')
       }
     })
   }
@@ -66,7 +71,8 @@ export class VisualizarAula implements OnInit{
         console.log('Alunos buscado com sucesso');
       },
       error: (err) => {
-        console.log('Erro ao tentar buscar Alunos');
+        console.log('Erro ao tentar buscar Alunos', err);
+        this.popup.erro('Erro ao tentar buscar Alunos.')
       }
     })
   }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
 import { UnidadeAula } from '../unidade-aula/unidade-aula';
 import { AulaService } from '../../core/services/aula.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-aulas-layout',
@@ -9,6 +10,7 @@ import { AulaService } from '../../core/services/aula.service';
   styleUrl: './aulas-layout.scss',
 })
 export class AulasLayout implements OnInit {
+  private popup = inject(PopupService);
 
   private AulaService = inject(AulaService);
   @Output() mostrar = new EventEmitter<void>();
@@ -31,6 +33,7 @@ export class AulasLayout implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao buscar aulas:', err);
+        this.popup.erro('Erro ao tentar buscar Aulas.')
       }
     });
   }

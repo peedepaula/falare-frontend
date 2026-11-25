@@ -3,6 +3,7 @@ import { UnidadeAluno } from '../../layout/unidade-aluno/unidade-aluno';
 import { TurmaService } from '../../core/services/turma.service';
 import { AlunoService } from '../../core/services/aluno.service';
 import { formatarData } from '../../utils/formatadores';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-visualizar-turma',
@@ -11,6 +12,8 @@ import { formatarData } from '../../utils/formatadores';
   styleUrl: './visualizar-turma.scss',
 })
 export class VisualizarTurma implements OnInit{
+  private popup = inject(PopupService);
+
   private turmaService = inject(TurmaService);
   private alunoService = inject(AlunoService);
 
@@ -43,9 +46,11 @@ export class VisualizarTurma implements OnInit{
         this.fechar.emit();
         this.recarregarTurmas.emit();
         console.log('Turma deletada com sucesso');
+        this.popup.erro('Turma deletada com sucesso.');
       },
       error: (err) => {
         console.log('Erro ao tentar deletar a turma', err)
+        this.popup.erro('Erro ao tentar deletar Turma.')
       }
     })
   }
@@ -61,7 +66,8 @@ export class VisualizarTurma implements OnInit{
         console.log('Alunos buscado com sucesso');
       },
       error: (err) => {
-        console.log('Erro ao tentar buscar Alunos');
+        console.log('Erro ao tentar buscar Alunos', err);
+        this.popup.erro('Erro ao tentar buscar Alunos.')
       }
     })
   }

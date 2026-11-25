@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
 import { PagamentoService } from '../../core/services/pagamento.service';
 import { formatarData } from '../../utils/formatadores';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-visualizar-pagamento',
@@ -9,6 +10,8 @@ import { formatarData } from '../../utils/formatadores';
   styleUrl: './visualizar-pagamento.scss',
 })
 export class VisualizarPagamento implements OnInit{
+  private popup = inject(PopupService);
+
   private pagamentoService = inject(PagamentoService);
 
   formatarData = formatarData;
@@ -40,9 +43,11 @@ export class VisualizarPagamento implements OnInit{
         this.fechar.emit();
         this.recarregarPagamentos.emit();
         console.log('Pagamento deletado')
+        this.popup.acerto('Pagamento deletado com sucesso.')
       },
       error: (err) => {
         console.log('Erro ao tentar deletar o Pagamento', err);
+        this.popup.erro('Erro ao tentar deletar Pagamento.');
       }
     }
     )
@@ -59,6 +64,7 @@ export class VisualizarPagamento implements OnInit{
       },
       error: (err) => {
         console.log('Erro ao tentar buscar Pagamento detalhado', err);
+        this.popup.erro('Erro ao tentar buscar Pagamento.');
       }
     })
   }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
 import { UnidadePagamento } from '../unidade-pagamento/unidade-pagamento';
 import { PagamentoService } from '../../core/services/pagamento.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-pagamentos-layout',
@@ -9,6 +10,8 @@ import { PagamentoService } from '../../core/services/pagamento.service';
   styleUrl: './pagamentos-layout.scss',
 })
 export class PagamentosLayout implements OnInit {
+  private popup = inject(PopupService);
+
   private PagamentoService = inject(PagamentoService);
   @Output() mostrar = new EventEmitter<void>();
 
@@ -30,6 +33,7 @@ export class PagamentosLayout implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao buscar Pagamentos:', err);
+        this.popup.erro('Erro ao tentar buscar Pagamentos.')
       }
     })
   }

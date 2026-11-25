@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { MatriculaService, StatusMatricula } from '../../core/services/matricula.service';
 import { FormsModule } from '@angular/forms';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-atualizar-matricula',
@@ -9,6 +10,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './atualizar-matricula.scss',
 })
 export class AtualizarMatricula implements OnInit {
+  private popup = inject(PopupService);
+
   private matriculaService = inject(MatriculaService);
 
   mostrarBuscarAlunos: boolean = false;
@@ -63,10 +66,12 @@ export class AtualizarMatricula implements OnInit {
       next: (res) => {
         this.fechar.emit();
         this.matriculaAtualizada.emit();
-        console.log('Mátricula deletada')
+        console.log('Matrícula deletada')
+        this.popup.acerto('Matrícula deletada com sucesso.')
       },
       error: (err) => {
-        console.log('Erro ao tentar deletar a Mátricula: ', err)
+        console.log('Erro ao tentar deletar a Matrícula: ', err)
+        this.popup.acerto('Erro ao tentar deletar Matrícula.')
       }
     })
   }
@@ -91,10 +96,12 @@ export class AtualizarMatricula implements OnInit {
       next: (res) => {
         this.fechar.emit();
         this.matriculaAtualizada.emit();
-        console.log('Mátricula atualizada')
+        console.log('Matrícula atualizada')
+        this.popup.acerto('Matrícula atualizada com sucesso.')
       },
       error: (err) => {
-        console.log('Erro ao tentar atualizar a Mátricula: ', err)
+        console.log('Erro ao tentar atualizar a Matrícula: ', err)
+        this.popup.erro('Erro ao tentar atualizar Matrícula.')
       }
     })
   }

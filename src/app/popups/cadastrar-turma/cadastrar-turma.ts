@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '
 import { IdiomaTurma, NivelTurma, TurmaService } from '../../core/services/turma.service';
 import { FormsModule } from '@angular/forms';
 import { ProfessorService } from '../../core/services/professor.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-cadastrar-turma',
@@ -10,6 +11,8 @@ import { ProfessorService } from '../../core/services/professor.service';
   styleUrl: './cadastrar-turma.scss',
 })
 export class CadastrarTurma implements OnInit{
+  private popup = inject(PopupService);
+
   private turmaService = inject(TurmaService);
   private professorService = inject(ProfessorService);
 
@@ -90,15 +93,22 @@ export class CadastrarTurma implements OnInit{
       next: () => {
         this.fechar.emit();
         this.recarregarTurmas.emit();
+        this.popup.acerto('Turma salva com sucesso.')
       },
-      error: (err) => console.log('Erro ao salvar turma: ', err.error),
+      error: (err) => {
+        console.log('Erro ao salvar turma: ', err.error)
+        this.popup.erro('Erro ao tentar salvar Turma.')
+      } 
     });
   }
 
   buscarProfessores() {
     this.professorService.buscarProfessores().subscribe({
       next: (res) => this.professores.set(res),
-      error: (err) => console.error('Erro ao buscar professores:', err),
+      error: (err) => {
+        console.error('Erro ao buscar professores:', err)
+        this.popup.erro('Erro ao tentar buscar Professores.')
+      },
     });
   }
 

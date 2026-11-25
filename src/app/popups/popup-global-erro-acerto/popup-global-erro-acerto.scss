@@ -1,0 +1,133 @@
+@use '../../../variaveis' as v;
+
+.container-popups {
+  position: fixed;
+  top: 120px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  pointer-events: none;
+
+  .pop-up-global{
+      width: 300px;
+      height: auto;
+      max-height: 300px;
+      overflow-y: auto;
+      background-color: v.$cor-fundo-branco;
+      border-radius: 10px;
+      padding: 16px 16px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 18px;
+      position: fixed;
+      top: 120px;
+      right: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      pointer-events: auto;
+      animation: entrarESair 4s ease-in-out forwards;
+  
+      &.erro{
+          border: solid 1px v.$cor-vemelho;
+      }
+  
+      &.acerto{
+          border: solid 1px v.$cor-verde;
+      }
+  
+      &.informacao{
+          border: solid 1px v.$cor-azul;
+      }
+  
+  
+      .icone-pop-up{
+          width: 24px;
+          height: 24px;
+          flex-shrink: 0;
+  
+          &.erro{
+              color: v.$cor-vemelho;
+          }
+  
+          &.acerto{
+              color: v.$cor-verde;
+          }
+  
+          &.informacao{
+              color: v.$cor-azul;
+          }
+      }
+  
+      .textos{
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding-left: 12px;
+  
+          &.erro{
+              border-left: solid 1px v.$cor-vemelho;
+          }
+  
+          &.acerto{
+              border-left: solid 1px v.$cor-verde;
+          }
+  
+          &.informacao{
+              border-left: solid 1px v.$cor-azul;
+          }
+          
+  
+          .titulo-popup{
+              font-size: 15px;
+              font-weight: 500;
+              color: v.$cor-tema;
+              text-decoration: underline 1px solid;
+  
+              &.erro{
+                  color: v.$cor-vemelho;
+              }
+  
+              &.acerto{
+                  color: v.$cor-verde;
+              }
+  
+              &.informacao{
+                  color: v.$cor-azul;
+              }
+          }
+  
+          .descricao-popup{
+              font-size: 12px;
+              font-weight: 350;
+              color: rgb(69, 69, 69);
+              opacity: 0.7;
+          }
+      }
+  }
+}
+
+
+@keyframes entrarESair {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  
+  15% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  85% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  100% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}

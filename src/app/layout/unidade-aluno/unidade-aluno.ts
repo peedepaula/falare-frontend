@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { IniciaisPipe } from '../../pipe/iniciais-pipe';
 
 @Component({
   selector: 'app-unidade-aluno',
-  imports: [],
+  imports: [IniciaisPipe],
   templateUrl: './unidade-aluno.html',
   styleUrl: './unidade-aluno.scss',
 })

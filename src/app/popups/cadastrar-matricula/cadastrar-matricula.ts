@@ -3,6 +3,7 @@ import { AlunoService } from '../../core/services/aluno.service';
 import { TurmaService } from '../../core/services/turma.service';
 import { Turma } from '../cadastrar-aula/cadastrar-aula';
 import { MatriculaService } from '../../core/services/matricula.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-cadastrar-matricula',
@@ -11,6 +12,8 @@ import { MatriculaService } from '../../core/services/matricula.service';
   styleUrl: './cadastrar-matricula.scss',
 })
 export class CadastrarMatricula implements OnInit{
+  private popup = inject(PopupService);
+
   private AlunoService = inject(AlunoService);
   private TurmaService = inject(TurmaService);
   private MatriculaService = inject(MatriculaService);
@@ -60,10 +63,12 @@ export class CadastrarMatricula implements OnInit{
       next: (res) => {
         this.fechar.emit();
         this.matriculaCadastrada.emit();
-        console.log('Mátricula cadastrada')
+        console.log('Matrícula cadastrada')
+        this.popup.acerto('Matrícula cadastrada com sucesso.')
       },
       error: (err) => {
         console.error('Erro ao cadastrar Mátricula:', err);
+        this.popup.erro('Erro ao tentar cadastrar Matrícula.')
       }
     })
   }
@@ -76,6 +81,7 @@ export class CadastrarMatricula implements OnInit{
         },
         error: (err) => {
           console.error('Erro ao buscar Turmas:', err);
+          this.popup.erro('Erro ao tentar buscar Turmas.')
         }
       },
     )
@@ -89,6 +95,7 @@ export class CadastrarMatricula implements OnInit{
         },
         error: (err) => {
           console.error('Erro ao buscar Alunos:', err);
+          this.popup.erro('Erro ao tentar buscar Alunos.')
         }
       },
     )

@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '
 import { AlunoService } from '../../core/services/aluno.service';
 import { CadatroPagamento, PagamentoService } from '../../core/services/pagamento.service';
 import { FormsModule } from '@angular/forms';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-cadastrar-pagamento',
@@ -10,6 +11,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cadastrar-pagamento.scss',
 })
 export class CadastrarPagamento implements OnInit{
+  private popup = inject(PopupService);
+
   private alunoService = inject(AlunoService);
   private pagamentoService = inject(PagamentoService);
 
@@ -68,9 +71,11 @@ export class CadastrarPagamento implements OnInit{
           this.recarregarPagamentos.emit();
   
           console.log('Pagamento atualizado');
+          this.popup.acerto('Pagamento atualizado com sucesso.')
         },
         error: (err) => {
           console.log('Erro ao tentar atualizar pagamento: ', err);
+          this.popup.erro('Erro ao tentar atualizar Pagamento.')
         }
       })
       return;
@@ -90,9 +95,11 @@ export class CadastrarPagamento implements OnInit{
         this.recarregarPagamentos.emit();
 
         console.log('Pagamento cadastrado');
+        this.popup.acerto('Pagamento cadastrado com sucesso.')
       },
       error: (err) => {
         console.log('Erro ao tentar cadastrar pagamento: ', err);
+        this.popup.erro('Erro ao tentar cadastrar Pagamento.')
       }
     })
 
@@ -106,6 +113,7 @@ export class CadastrarPagamento implements OnInit{
         },
         error: (err) => {
           console.error('Erro ao buscar Alunos:', err);
+          this.popup.erro('Erro ao tentar buscar Alunos.')
         }
       },
     )

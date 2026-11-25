@@ -50,6 +50,12 @@
             height: 14px;
             color: v.$cor-tema;
         }
+
+        .iniciais-imagem{
+            font-size: 8px;
+            font-weight: 450;
+            color: v.$cor-tema;
+        }
     }
 
     .dados{
@@ -69,6 +75,8 @@
             font-weight: 350;
             color: #3f3f3f;
             opacity: 0.7;
+            display: flex;
+            text-align: start;
         }
     }
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Output, OnInit, signal } from '@angular/core';
 import { UnidadeAluno } from '../unidade-aluno/unidade-aluno';
 import { AlunoService } from '../../core/services/aluno.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-alunos-layout',
@@ -9,6 +10,7 @@ import { AlunoService } from '../../core/services/aluno.service';
   styleUrl: './alunos-layout.scss',
 })
 export class AlunosLayout implements OnInit {
+  private popup = inject(PopupService);
 
   private alunoService = inject(AlunoService);
 
@@ -28,6 +30,7 @@ export class AlunosLayout implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao buscar alunos:', err);
+        this.popup.erro('Erro ao tentar buscar Alunos.')
       }
     });
   }

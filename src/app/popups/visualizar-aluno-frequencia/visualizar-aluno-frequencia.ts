@@ -1,5 +1,6 @@
 import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
 import { AlunoService } from '../../core/services/aluno.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-visualizar-aluno-frequencia',
@@ -8,6 +9,8 @@ import { AlunoService } from '../../core/services/aluno.service';
   styleUrl: './visualizar-aluno-frequencia.scss',
 })
 export class VisualizarAlunoFrequencia implements OnInit{
+  private popup = inject(PopupService);
+
   private alunoService = inject(AlunoService);
   mostrarSemestre: boolean = false;
   
@@ -30,7 +33,10 @@ export class VisualizarAlunoFrequencia implements OnInit{
         this.dadosFrequencia.set(res);
         this.matriculaAtual.set(res[0] ?? null);
       },
-      error: (err) => console.log('Erro ao tentar buscar Frequência', err),
+      error: (err) => {
+        console.log('Erro ao tentar buscar Frequência', err)
+        this.popup.erro('Erro ao tentar buscar Frequência.')
+      }
     });
   }
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, inject, input, Input, OnInit, Output, signal } from '@angular/core';
 import { cadastrarChamadaAluno, ChamadaService } from '../../core/services/chamada.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-chamada',
@@ -8,6 +9,8 @@ import { cadastrarChamadaAluno, ChamadaService } from '../../core/services/chama
   styleUrl: './chamada.scss',
 })
 export class Chamada implements OnInit{
+  private popup = inject(PopupService);
+
   private chamadaService = inject(ChamadaService);
 
   alunos = signal<any[]>([]);
@@ -87,10 +90,12 @@ if (!this.turmaId() || !this.data() || itens.length === 0
           this.salvando.set(false);
           this.recarregarAulas.emit();
           this.fechar.emit();
+          this.popup.acerto('Chamada cadastrada com sucesso.')
         },
         error: (err) => {
           this.salvando.set(false);
           console.log('Erro ao tentar criar Chamada', err.error);
+          this.popup.erro('Erro ao tentar cadastrar Chamada.')
         },
       });
   }
@@ -121,12 +126,14 @@ if (!this.turmaId() || !this.data() || itens.length === 0
           this.presencas.set(presencas);
           this.atestados.set(atestados);
           this.jaTemChamada.set(true);
+          this.popup.informacao('Chamada já realizada.')
         }
         this.carregando.set(false);
       },
       error: (err) => {
         console.log('Erro ao verificar chamada', err.status, err.error);
         this.carregando.set(false);
+        this.popup.erro('Erro ao tentar buscar Chamada.')
       },
     });
   }

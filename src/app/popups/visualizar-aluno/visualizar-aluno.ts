@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '
 import { AlunoService } from '../../core/services/aluno.service';
 import { MatriculaService } from '../../core/services/matricula.service';
 import { FormsModule } from '@angular/forms';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-visualizar-aluno',
@@ -10,6 +11,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './visualizar-aluno.scss',
 })
 export class VisualizarAluno implements OnInit{
+  private popup = inject(PopupService);
+
   private alunoService = inject(AlunoService);
   private matriculaService = inject(MatriculaService);
 
@@ -61,6 +64,7 @@ export class VisualizarAluno implements OnInit{
       },
       error: (err) => {
         console.log('Erro ao tentar buscar o aluno', err)
+        this.popup.erro('Erro ao tentar buscar Aluno.')
       }
     })
   }
@@ -101,9 +105,11 @@ export class VisualizarAluno implements OnInit{
       next: (res) => {
         this.recarregarAlunos.emit();
         console.log('Notas salvas')
+        this.popup.acerto('Notas salvas com sucesso.')
       },
       error: (err) => {
         console.log('Erro ao tentar salvar as notas', err)
+        this.popup.erro('Erro ao tentar salvar Notas.')
       }
     })
   }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
 import { TurmaService } from '../../core/services/turma.service';
 import { AulaService } from '../../core/services/aula.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-cadastrar-aula',
@@ -11,6 +12,8 @@ import { AulaService } from '../../core/services/aula.service';
 
 
 export class CadastrarAula implements OnInit{
+  private popup = inject(PopupService);
+  
   private TurmaService = inject(TurmaService);
   private AulaService = inject(AulaService);
 
@@ -53,6 +56,7 @@ export class CadastrarAula implements OnInit{
       },
       error: (err) => {
         console.error('Erro ao buscar Turmas', err)
+        this.popup.erro('Erro ao tentar buscar Turmas.')
       }
     });
   }
@@ -68,9 +72,11 @@ export class CadastrarAula implements OnInit{
         this.fecharPopup();
         this.aulaCriada.emit();
         console.log("Aula criada")
+        this.popup.acerto('Turma cadastrada com sucesso.')
       },
       error: (err) => {
         console.log("Erro ao cria Aula", err)
+        this.popup.erro('Erro ao tentar cadastrar Turma.')
       }
     })
   }
