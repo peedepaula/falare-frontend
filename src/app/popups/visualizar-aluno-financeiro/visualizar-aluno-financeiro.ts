@@ -40,5 +40,19 @@ export class VisualizarAlunoFinanceiro implements OnInit{
       }
     });
     this.carregandoComponente = false;
+  };
+
+  matriculaTrancada = signal(false);
+
+  alternarTrancamento(): void {
+    this.alunoService.alternarTrancamento().subscribe({
+      next: (res) => {
+        this.matriculaTrancada.set(res.status === 'Trancada');
+        this.popup.acerto(
+          res.status === 'Trancada' ? 'Matrícula trancada.' : 'Matrícula reativada.'
+        );
+      },
+      error: (err) => this.popup.erro(err.error?.mensagem ?? 'Erro ao alterar a matrícula.')
+    });
   }
 }

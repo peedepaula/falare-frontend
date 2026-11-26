@@ -1,4 +1,4 @@
-import { Component, inject, viewChild, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, signal, viewChild, ViewChild } from '@angular/core';
 import { Header } from '../../layout/header/header';
 import { Nav } from '../../layout/nav/nav';
 import { Card } from '../../layout/card/card';
@@ -8,6 +8,14 @@ import { VisualizarAluno } from '../../popups/visualizar-aluno/visualizar-aluno'
 import { CadastrarAluno } from '../../popups/cadastrar-aluno/cadastrar-aluno';
 import { GlobalConfirmacao } from '../../popups/global-confirmacao/global-confirmacao';
 import { AlunoService } from '../../core/services/aluno.service';
+import { AnalyticsService } from '../../core/services/analytics.service';
+import { PopupService } from '../../core/services/popup.service';
+
+interface AnalyticsDadosAluno {
+  totalAlunos: number;
+  mediaNotas: number;
+  mediaFaltas: number;
+}
 
 @Component({
   selector: 'app-alunos',
@@ -15,7 +23,9 @@ import { AlunoService } from '../../core/services/aluno.service';
   templateUrl: './alunos.html',
   styleUrl: './alunos.scss',
 })
-export class Alunos {
+export class Alunos implements OnInit{
+  private analyticsService = inject(AnalyticsService);
+  private popup = inject(PopupService);
   private alunoService = inject(AlunoService);
   private alunoLayout = viewChild(AlunosLayout);
 
@@ -38,6 +48,10 @@ export class Alunos {
   abrirCadastro() {
     this.alunoSelecionado = null;
     this.mostrarCadastrarAluno = true;
+  }
+
+  abrirAlunosEmRiscos(){
+
   }
 
   abrirEdicao() {
@@ -82,6 +96,25 @@ export class Alunos {
   mostrarMenu: boolean = false;
   trocarManuMobile(menu: boolean){
     this.mostrarMenu = menu;
+  }
+
+  ngOnInit(): void {
+    this.buscarAnalytics();
+  }
+
+  analyticsDados = signal<AnalyticsDadosAluno | null>(null);
+
+  buscarAnalytics(){
+    this.analyticsService.buscarAnalyticsAluno().subscribe({
+      next: (res) => {
+          this.analyticsDados.set(res);
+          console.log("o que chega: ", this.analyticsDados)
+      },
+      error: (err) => {
+        console.log('Erro ao tentar buscar Analytics Aluno', err);
+        this.popup.erro("Erro ao tentar buscar Analytics");
+      }
+    })
   }
 
 }

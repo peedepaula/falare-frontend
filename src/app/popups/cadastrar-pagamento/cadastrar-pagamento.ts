@@ -56,7 +56,10 @@ export class CadastrarPagamento implements OnInit{
 
   cadastrarAtualizarPagamento(){
     const valor = this.paraNumero(this.pagamento.valor);
-    if (valor === undefined || valor <= 0) return;
+    if (valor === undefined || valor <= 0) {
+      this.popup.erro('O valor ddeve ser maior que 0.')
+      return;
+    };
 
     if(this.pagamentoSelecionado){
       this.pagamentoService.atualizarPagamento(
@@ -81,7 +84,10 @@ export class CadastrarPagamento implements OnInit{
       return;
     }
 
-    if (!this.alunoSelecionado.id) return;
+    if (!this.alunoSelecionado.id) {
+      this.popup.erro('Selecione um Aluno.')
+      return;
+    };
 
     this.pagamentoService.cadastrarPagamento(
       {

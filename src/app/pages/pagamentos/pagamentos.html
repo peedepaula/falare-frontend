@@ -10,17 +10,17 @@
         <section class="cards">
             <app-card
             nomeCampo="Total pago"
-            dadoCampo="R$: 10.000"
+            [dadoCampo]="analyticsDados()?.totalPago ?? 0"
             >
             </app-card>
             <app-card
             nomeCampo="Total pendente"
-            dadoCampo="R$: 10.000"
+            [dadoCampo]="analyticsDados()?.totalPendente ?? 0"
             >
             </app-card>
             <app-card
             nomeCampo="Total atrasado"
-            dadoCampo="R$: 10.000"
+            [dadoCampo]="analyticsDados()?.totalAtrasado ?? 0"
             >
             </app-card>
         </section>

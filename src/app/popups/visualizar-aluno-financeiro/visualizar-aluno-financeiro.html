@@ -11,7 +11,9 @@
             <div class="status">
                 <p class="sessao">Status atual:</p>
                 <h3 class="status-real">{{ f.emAberto > 0? 'Pendente' : 'Pago'  }}!</h3>
-    
+                <button class="trancar-matricula" (click)="alternarTrancamento()">
+                    Trocar matrícula
+                </button>
             </div>
     
             <div class="historico">

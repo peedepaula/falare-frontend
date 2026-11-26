@@ -78,6 +78,22 @@
                 font-weight: 600;
                 color: v.$cor-tema;
             }
+
+            .trancar-matricula{
+                padding: 12px 32px;
+                border-radius: 10px;
+                font-size: 14px;
+                font-weight: 500;
+                color: white;
+                background-color: v.$cor-tema;
+                border: none;
+                cursor: pointer;
+                transition: all ease 0.4s;
+
+                &:hover{
+                    opacity: 0.7;
+                }
+            }
         }
 
         .sessao{

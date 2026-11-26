@@ -52,7 +52,10 @@ export class CadastrarMatricula implements OnInit{
   };
 
   cadastrarMatricula(){
-    if(!this.alunoSelecionado.id || !this.turmaSelecionada.id)return;
+    if(!this.alunoSelecionado.id || !this.turmaSelecionada.id){
+      this.popup.erro('Selecione Aluno e Turma.')
+      return;
+    };
 
     this.MatriculaService.cadastrarMatricula(
       {

@@ -62,7 +62,10 @@ export class CadastrarAula implements OnInit{
   }
 
   cadastrarAula(){
-    if(!this.turmaSelecionada.id)return;
+    if(!this.turmaSelecionada.id){
+      this.popup.erro('Selecione uma turma.')
+      return;
+    };
     
     this.AulaService.cadastrarAula({
         turmaId: this.turmaSelecionada.id,
@@ -72,11 +75,11 @@ export class CadastrarAula implements OnInit{
         this.fecharPopup();
         this.aulaCriada.emit();
         console.log("Aula criada")
-        this.popup.acerto('Turma cadastrada com sucesso.')
+        this.popup.acerto('Aula cadastrada com sucesso.')
       },
       error: (err) => {
         console.log("Erro ao cria Aula", err)
-        this.popup.erro('Erro ao tentar cadastrar Turma.')
+        this.popup.erro('Erro ao tentar cadastrar Aula.')
       }
     })
   }

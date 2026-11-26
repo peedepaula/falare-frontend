@@ -10,7 +10,6 @@
         <section class="cards">
             <app-card 
             nomeCampo="Consultar sua frequência"
-            dadoCampo="Boa"
             [botaoAtivo]="true"
             (mostrar)="mostrarFrequencia=true"
             ></app-card>
@@ -21,7 +20,6 @@
             ></app-card>
             <app-card
             nomeCampo="Situação financeira"
-            dadoCampo="Pago"
             [botaoAtivo]="true"
             (mostrar)="mostrarFinanceiro=true"
             ></app-card>
@@ -52,17 +50,32 @@
 
 
         <div class="area-certificado">
-            <div class="textos">
-                @if (statusAluno) {
-                    <h3 class="texto-principal">Parabéns pela conquista, {{ usuario()?.nome }}!</h3>
-                    <p class="texto-secundario">Você concluiu o curso com sucesso. Seu certificado oficial já está pronto para ser emitido.</p>
-                }
-                @else {
-                    <h3 class="texto-principal">Continue firme, {{ usuario()?.nome }}!</h3>
-                    <p class="texto-secundario">Seu certificado será liberado aqui assim que você concluir todas as aulas.</p>
-                }
-            </div>
-            <button class="botao-emitir-certificado" [class.inativo]="!statusAluno">Emitir certificado</button>
+            @if (dadosAlunoInicio(); as dados) {
+                <div class="textos">
+                    @if (dados.statusCertificado === 'Liberado') {
+                        <h3 class="texto-principal">Parabéns pela conquista, {{ usuario()?.nome }}!</h3>
+                        <p class="texto-secundario">Você concluiu o curso com sucesso. Seu certificado oficial já está pronto para ser emitido.</p>
+                    } @else {
+                        <h3 class="texto-principal">Continue firme, {{ usuario()?.nome }}!</h3>
+                        <p class="texto-secundario">Seu certificado será liberado aqui assim que você concluir o curso.</p>
+                    }
+                </div>
+                <button
+                    class="botao-emitir-certificado"
+                    [class.inativo]="dados.statusCertificado !== 'Liberado'"
+                    [disabled]="dados.statusCertificado !== 'Liberado' || emitindoCertificado()"
+                    (click)="emitirCertificado()">
+                    Emitir certificado
+                </button>
+            }
         </div>
+        @if (dadosAlunoInicio(); as dados){
+            @if(dados.statusFalta === "Atenção"){
+                <div class="area-aviso-falta">
+                    <h6 class="titulo-aviso">Olá {{ usuario()?.nome }}!</h6>
+                    <p class="destalhe-aviso">Viemos aqui he avisar para tomar cuidado com usas faltas, voce esta proximo de repetir por falta</p>
+                </div>
+            }
+        }
     </section>
 </main>

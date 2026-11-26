@@ -10,15 +10,15 @@
         <section class="cards">
             <app-card 
             nomeCampo="Total de Aulas"
-            dadoCampo="30"
+            [dadoCampo]="analyticsDados()?.totalAulas ?? 0"
             ></app-card>
             <app-card
             nomeCampo="Total de Alunos"
-            dadoCampo="200"
+            [dadoCampo]="analyticsDados()?.totalAlunos ?? 0"
             ></app-card>
             <app-card
             nomeCampo="Total de Turmas"
-            dadoCampo="9"
+            [dadoCampo]="analyticsDados()?.totalTurmas ?? 0"
             ></app-card>
         </section>
 

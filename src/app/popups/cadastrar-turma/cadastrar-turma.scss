@@ -86,7 +86,7 @@
             }
 
             .input-nota{
-                width: 200px;
+                width: 100%;
                 height: 45px;
                 border-radius: 10px;
                 border: none;
@@ -106,7 +106,7 @@
             }
 
             .grid-dias{
-                width: 200px;
+                width: 100%;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 8px;
@@ -139,7 +139,7 @@
             }
 
             .grid-horarios{
-                width: 200px;
+                width: 100%;
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
@@ -155,7 +155,7 @@
             }
 
             .fundo-input-real{
-                width: 200px;
+                width: 100%;
                 height: 45px;
                 display: flex;
                 flex-direction: row;

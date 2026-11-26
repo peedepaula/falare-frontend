@@ -8,7 +8,7 @@ import { Component, EventEmitter, input, Output } from '@angular/core';
 })
 export class Card {
   nomeCampo = input<string>('nome');
-  dadoCampo = input<string>('');
+  dadoCampo = input<number>(0);
   botaoAtivo = input<boolean>(false);
 
   @Output() mostrar = new EventEmitter<void>();

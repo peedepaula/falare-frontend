@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -26,8 +26,13 @@ export class AlunoService {
   private http = inject(HttpClient);
   private api = `${environment.apiUrl}/Aluno`;
 
-  buscarAlunos(): Observable<any> {
-    return this.http.get(`${this.api}/alunos`);
+  buscarAlunos(apenasEmRisco = false): Observable<any> {
+    const params = new HttpParams().set('apenasEmRisco', apenasEmRisco);
+    return this.http.get(`${this.api}/alunos`, { params });
+  }
+
+  buscarAlunoInicio(): Observable<any> {
+    return this.http.get(`${this.api}/aluno/status/inicio`);
   }
 
   buscarAlunosPorTurma(turmaId: string): Observable<any> {
@@ -60,5 +65,13 @@ export class AlunoService {
   }
   buscarAlunoFinanceiro(): Observable<any> {
     return this.http.get(`${this.api}/aluno/financeiro`);
+  }
+
+  alternarTrancamento(): Observable<{ status: string }> {
+    return this.http.patch<{ status: string }>(`${this.api}/aluno/trancar`, {});
+  }
+
+  emitirCertificado(): Observable<Blob> {
+    return this.http.get(`${this.api}/aluno/certificado`, { responseType: 'blob' });
   }
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProfessorService } from '../../core/services/professor.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-cadastrar-professor',
@@ -9,6 +10,7 @@ import { ProfessorService } from '../../core/services/professor.service';
   styleUrl: './cadastrar-professor.scss',
 })
 export class CadastrarProfessor implements OnInit {
+  private popup = inject(PopupService);
   private professorService = inject(ProfessorService);
 
   @Input() professor: any = null;
@@ -36,8 +38,14 @@ export class CadastrarProfessor implements OnInit {
   }
 
   salvar() {
-    if (!this.nome || !this.email) return;
-    if (!this.editando && !this.senha) return;
+    if (!this.nome || !this.email) {
+      this.popup.erro('Preencha todos os campos.')
+      return;
+    };
+    if (!this.editando && !this.senha) {
+      this.popup.erro('Senha é um campo obrigatório.')
+      return;
+    };
 
     this.carregando.set(true);
 

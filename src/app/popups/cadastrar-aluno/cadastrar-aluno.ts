@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlunoService } from '../../core/services/aluno.service';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-cadastrar-aluno',
@@ -9,6 +10,8 @@ import { AlunoService } from '../../core/services/aluno.service';
   styleUrl: './cadastrar-aluno.scss',
 })
 export class CadastrarAluno implements OnInit {
+  private popup = inject(PopupService);
+
   private fb = inject(FormBuilder);
   private alunoService = inject(AlunoService);
 
@@ -68,10 +71,12 @@ export class CadastrarAluno implements OnInit {
         this.salvando = false;
         this.salvo.emit();
         this.fecharPopup();
+        this.popup.acerto('Aluno criado com sucesso.')
       },
       error: (err) => {
         this.salvando = false;
         console.error('Erro ao salvar aluno:', err);
+        this.popup.erro('Erro ao tentar criar Aluno.')
       }
     });
   }

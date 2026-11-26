@@ -71,7 +71,7 @@ export class CadastrarTurma implements OnInit{
       !this.vagas ||
       this.vagas <= 0
     ) {
-      console.log('Preencha todos os campos');
+      this.popup.erro('Preencha todos os campos.')
       return;
     }
 

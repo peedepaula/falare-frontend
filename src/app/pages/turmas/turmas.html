@@ -10,17 +10,17 @@
         <section class="cards">
             <app-card
             nomeCampo="Total de turmas"
-            dadoCampo="30"
+            [dadoCampo]="analyticsDados()?.totalTurmas ?? 0"
             >
             </app-card>
             <app-card
             nomeCampo="Média de alunos"
-            dadoCampo="7.9"
+            [dadoCampo]="analyticsDados()?.mediaAlunos ?? 0"
             >
             </app-card>
             <app-card
             nomeCampo="Média de faltas"
-            dadoCampo="3.1"
+            [dadoCampo]="analyticsDados()?.mediaFaltas ?? 0"
             >
             </app-card>
         </section>

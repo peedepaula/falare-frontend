@@ -10,17 +10,17 @@
         <section class="cards">
             <app-card
             nomeCampo="Total de matriculas"
-            dadoCampo="280"
+            [dadoCampo]="analyticsDados()?.totalMatriculas ?? 0"
             >
             </app-card>
             <app-card
             nomeCampo="Matrículas inativas"
-            dadoCampo="80"
+            [dadoCampo]="analyticsDados()?.matriculasInativas ?? 0"
             >
             </app-card>
             <app-card
             nomeCampo="Criadas este mês"
-            dadoCampo="10"
+            [dadoCampo]="analyticsDados()?.criadasEsteMes ?? 0"
             >
             </app-card>
         </section>

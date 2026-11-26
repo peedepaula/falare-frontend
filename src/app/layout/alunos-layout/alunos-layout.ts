@@ -3,6 +3,7 @@ import { UnidadeAluno } from '../unidade-aluno/unidade-aluno';
 import { AlunoService } from '../../core/services/aluno.service';
 import { PopupService } from '../../core/services/popup.service';
 import { Carregamento } from '../carregamento/carregamento';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-alunos-layout',
@@ -17,28 +18,37 @@ export class AlunosLayout implements OnInit {
 
   @Output() mostrar = new EventEmitter<void>();
 
-  carregandoComponente: boolean = true;
+  // alunosEmRisco: boolean = false;
+  // carregandoComponente: boolean = true;
 
-  alunos = signal<any[]>([]);
+  // alunos = signal<any[]>([]);
 
   ngOnInit(): void {
     this.buscarAlunos();
   }
 
-  buscarAlunos(): void {
-    this.carregandoComponente = true;
-    this.alunoService.buscarAlunos().subscribe({
-      next: (res) => {
-        this.alunos.set(res);
-        console.log('Alunos carregados:', this.alunos());
-      },
+  alunosEmRisco = signal(false);
+  carregandoComponente = signal(true);
+  alunos = signal<any[]>([]);
+
+buscarAlunos(): void {
+  this.carregandoComponente.set(true);
+
+  this.alunoService.buscarAlunos(this.alunosEmRisco())
+    .pipe(finalize(() => this.carregandoComponente.set(false)))
+    .subscribe({
+      next: (res) => this.alunos.set(res),
       error: (err) => {
         console.error('Erro ao buscar alunos:', err);
-        this.popup.erro('Erro ao tentar buscar Alunos.')
+        this.popup.erro('Erro ao tentar buscar Alunos.');
       }
     });
-    this.carregandoComponente = false;
-  }
+}
+
+alternarAlunosEmRisco(): void {
+  this.alunosEmRisco.update(v => !v);
+  this.buscarAlunos();
+}
 
   mostrarPopup(aluno: any) {
     this.mostrar.emit(aluno);
