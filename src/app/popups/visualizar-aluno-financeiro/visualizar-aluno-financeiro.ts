@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angula
 import { UnidadePagamento } from '../../layout/unidade-pagamento/unidade-pagamento';
 import { AlunoService } from '../../core/services/aluno.service';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../../layout/carregamento/carregamento';
 
 @Component({
   selector: 'app-visualizar-aluno-financeiro',
-  imports: [UnidadePagamento],
+  imports: [UnidadePagamento, Carregamento],
   templateUrl: './visualizar-aluno-financeiro.html',
   styleUrl: './visualizar-aluno-financeiro.scss',
 })
@@ -23,9 +24,11 @@ export class VisualizarAlunoFinanceiro implements OnInit{
     this.buscarPagamentos();
   }
 
+  carregandoComponente: boolean = true;
   dadosFinanceiro = signal<any | null>(null);
 
   buscarPagamentos(){
+    this.carregandoComponente = true;
     this.alunoService.buscarAlunoFinanceiro().subscribe({
       next: (res) => {
         this.dadosFinanceiro.set(res);
@@ -35,6 +38,7 @@ export class VisualizarAlunoFinanceiro implements OnInit{
         console.log('Erro ao tentar buscar Financeiro', err);
         this.popup.erro('Erro ao tentar buscar Pagamentos.')
       }
-    })
+    });
+    this.carregandoComponente = false;
   }
 }

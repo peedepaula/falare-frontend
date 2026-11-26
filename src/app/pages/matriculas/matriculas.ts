@@ -35,4 +35,9 @@ export class Matriculas {
   recarregarMatriculas(){
     this.matriculasLayout()?.buscarMatriculas();
   }
+
+  mostrarMenu: boolean = false;
+  trocarManuMobile(menu: boolean){
+    this.mostrarMenu = menu;
+  }
 }

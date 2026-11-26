@@ -82,7 +82,10 @@ export class AtualizarMatricula implements OnInit {
     return isNaN(n) ? undefined : n;
   }
 
+  travarBotao: boolean = false;
+
   atualizarMatricula(){
+    this.travarBotao = true;
     if(!this.matricula)return;
 
     this.matriculaService.atualizarMatricula(
@@ -103,6 +106,7 @@ export class AtualizarMatricula implements OnInit {
         console.log('Erro ao tentar atualizar a Matrícula: ', err)
         this.popup.erro('Erro ao tentar atualizar Matrícula.')
       }
-    })
+    });
+    this.travarBotao = false;
   }
 }

@@ -4,10 +4,11 @@ import { TurmaService } from '../../core/services/turma.service';
 import { AlunoService } from '../../core/services/aluno.service';
 import { formatarData } from '../../utils/formatadores';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../../layout/carregamento/carregamento';
 
 @Component({
   selector: 'app-visualizar-turma',
-  imports: [UnidadeAluno],
+  imports: [UnidadeAluno, Carregamento],
   templateUrl: './visualizar-turma.html',
   styleUrl: './visualizar-turma.scss',
 })
@@ -55,9 +56,12 @@ export class VisualizarTurma implements OnInit{
     })
   }
 
+  carregandoComponente: boolean = true;
+
   alunos = signal<any[]>([]);
 
   buscarAlunos(){
+    this.carregandoComponente = true;
     if(!this.turmaSelecionada.id)return;
 
     this.alunoService.buscarAlunosPorTurma(this.turmaSelecionada.id).subscribe({
@@ -69,6 +73,7 @@ export class VisualizarTurma implements OnInit{
         console.log('Erro ao tentar buscar Alunos', err);
         this.popup.erro('Erro ao tentar buscar Alunos.')
       }
-    })
+    });
+    this.carregandoComponente = false;
   }
 }

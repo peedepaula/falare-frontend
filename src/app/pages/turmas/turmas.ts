@@ -42,4 +42,8 @@ export class Turmas {
     this.mostrarCadastrarTurma = false;
   }
 
+  mostrarMenu: boolean = false;
+  trocarManuMobile(menu: boolean){
+    this.mostrarMenu = menu;
+  }
 }

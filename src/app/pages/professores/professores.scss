@@ -14,10 +14,16 @@
     overflow-x: hidden;
     gap: 16px;
     background-color: v.$cor-fundo-offwhite;
+
+    @media (max-width: 600px){
+        height: auto;
+        height: 100%;
+    }
 }
 
 .header{ grid-area: header;}
 .nav{ grid-area: nav;}
+.fundo-nav-mobile{display: none;}
 .conteudo {
     grid-area: conteudo;
     background-color: v.$cor-fundo-branco;
@@ -34,6 +40,11 @@
     overflow-x: hidden;
     border: solid 1.5px v.$cor-tema-para-borda-conteudo;
 
+    @media (max-width: 600px){
+        height: auto;
+        height: 100%;
+    }
+
     .cards {
         grid-area: cards;
         display: grid;
@@ -41,5 +52,70 @@
         gap: 12px;
         min-width: 0;
         width: 100%;
+
+        @media (max-width: 600px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            > :last-child {
+                grid-column: 1 / -1;
+            }
+        }
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1280px){
+    .modelo-corpo-painel {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 1fr;
+        grid-template-areas:
+            "header"
+            "conteudo";
+        padding: 8px 12px 12px 12px;
+    }
+
+    .nav{
+        display: none;
+    }
+
+    .fundo-nav-mobile{
+        display: flex;
+        backdrop-filter: blur(4px);
+        width: calc(100% - 24px);
+        height: 100%;
+        background: rgba(0, 0, 0, 0.142);
+        position: absolute;
+        top: 80px;
+        left: 12px;
+        z-index: 999;
+        border-radius: 10px;
+        animation: aparecerPopup 0.5s ease;
+    }
+}
+
+@media(max-width: 600px){
+    .modelo-corpo-painel {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 1fr;
+        grid-template-areas:
+            "header"
+            "conteudo";
+        padding: 8px 12px 12px 12px;
+    }
+
+    .nav{
+        display: none;
+    }
+
+    .fundo-nav-mobile{
+        display: flex;
+        backdrop-filter: blur(4px);
+        width: calc(100% - 24px);
+        height: 100%;
+        background: rgba(0, 0, 0, 0.142);
+        position: absolute;
+        top: 80px;
+        left: 12px;
+        z-index: 999;
+        border-radius: 10px;
+        animation: aparecerPopup 0.5s ease;
     }
 }

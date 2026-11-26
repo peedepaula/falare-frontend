@@ -79,4 +79,9 @@ export class Alunos {
     this.alunoLayout()?.buscarAlunos();
   }
 
+  mostrarMenu: boolean = false;
+  trocarManuMobile(menu: boolean){
+    this.mostrarMenu = menu;
+  }
+
 }

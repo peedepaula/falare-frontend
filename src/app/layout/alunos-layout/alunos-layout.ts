@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, Output, OnInit, signal } from '@angula
 import { UnidadeAluno } from '../unidade-aluno/unidade-aluno';
 import { AlunoService } from '../../core/services/aluno.service';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../carregamento/carregamento';
 
 @Component({
   selector: 'app-alunos-layout',
-  imports: [UnidadeAluno],
+  imports: [UnidadeAluno, Carregamento],
   templateUrl: './alunos-layout.html',
   styleUrl: './alunos-layout.scss',
 })
@@ -16,6 +17,8 @@ export class AlunosLayout implements OnInit {
 
   @Output() mostrar = new EventEmitter<void>();
 
+  carregandoComponente: boolean = true;
+
   alunos = signal<any[]>([]);
 
   ngOnInit(): void {
@@ -23,6 +26,7 @@ export class AlunosLayout implements OnInit {
   }
 
   buscarAlunos(): void {
+    this.carregandoComponente = true;
     this.alunoService.buscarAlunos().subscribe({
       next: (res) => {
         this.alunos.set(res);
@@ -33,6 +37,7 @@ export class AlunosLayout implements OnInit {
         this.popup.erro('Erro ao tentar buscar Alunos.')
       }
     });
+    this.carregandoComponente = false;
   }
 
   mostrarPopup(aluno: any) {

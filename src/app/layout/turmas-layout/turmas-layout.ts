@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angula
 import { UnidadeTurma } from '../unidade-turma/unidade-turma';
 import { TurmaService } from '../../core/services/turma.service';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../carregamento/carregamento';
 
 @Component({
   selector: 'app-turmas-layout',
-  imports: [UnidadeTurma],
+  imports: [UnidadeTurma, Carregamento],
   templateUrl: './turmas-layout.html',
   styleUrl: './turmas-layout.scss',
 })
@@ -19,6 +20,7 @@ export class TurmasLayout implements OnInit {
     this.mostrar.emit(turma);
   }
 
+  carregandoComponente: boolean = true;
   turmas = signal<any[]>([]);
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class TurmasLayout implements OnInit {
   }
 
   buscarTurmas(){
+    this.carregandoComponente = true;
     this.turmaService.buscarTurmas().subscribe({
       next: (res) => {
         this.turmas.set(res);
@@ -36,6 +39,7 @@ export class TurmasLayout implements OnInit {
         this.popup.erro('Erro ao tentar buscar Turma.')
       }
     });
+    this.carregandoComponente = false;
   }
 
 }

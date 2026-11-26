@@ -36,4 +36,9 @@ export class Professores {
   recarregarProfessores() {
     this.professoresLayout()?.carregarProfessores();
   }
+
+  mostrarMenu: boolean = false;
+  trocarManuMobile(menu: boolean){
+    this.mostrarMenu = menu;
+  }
 }

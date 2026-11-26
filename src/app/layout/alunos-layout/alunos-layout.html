@@ -11,12 +11,21 @@
         </div>
     </div>
 
-    <div class="alunos">
-        @for (aluno of alunos(); track aluno.id) {
-            <app-unidade-aluno
-            [aluno]="aluno"
-            (click)="mostrarPopup(aluno)"
-            ></app-unidade-aluno>
+    <div class="alunos" [class.esta-carregando-nao-tem]="carregandoComponente || alunos().length === 0">
+        @if(carregandoComponente){
+            <app-carregamento></app-carregamento>
+        }
+
+        @else if(!carregandoComponente && alunos().length > 0){
+            @for (aluno of alunos(); track aluno.id) {
+                <app-unidade-aluno
+                [aluno]="aluno"
+                (click)="mostrarPopup(aluno)"
+                ></app-unidade-aluno>
+            }
+        }
+        @else{
+            <p class="nao-tem">Não tem Alunos</p>
         }
         
     </div>

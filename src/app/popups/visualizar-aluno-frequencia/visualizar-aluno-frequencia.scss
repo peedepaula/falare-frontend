@@ -15,6 +15,14 @@
     padding: 10px 32px;
     box-sizing: border-box;
 
+    @media (min-width: 601px) and (max-width: 1280px){
+        width: 90%;
+    }
+
+    @media(max-width: 600px){
+        width: 90%;
+    }
+
     .header-popup{
         display: flex;
         flex-direction: row;
@@ -29,6 +37,8 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            text-align: center;
+            white-space: nowrap;
         }
 
         .icone-x{
@@ -51,6 +61,10 @@
         display: flex;
         flex-direction: column;
         gap: 32px;
+
+       @media(max-width: 600px){
+            margin-top: 22px;
+        }
         
         .fundo-semetre{
             margin-left: auto;
@@ -61,6 +75,7 @@
             flex-direction: row;
             align-items: center;
             cursor: pointer;
+            animation: aparecerPopup 0.6s ease;
 
             .input-real{
                 width: 100%;
@@ -131,22 +146,36 @@
             display: flex;
             flex-direction: column;
             gap: 32px;
+            animation: aparecerPopup 0.6s ease;
 
             .nome-nota{
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
+                border: solid 1px v.$cor-tema;
+                border-radius: 10px;
+                padding: 10px 16px;
+                box-sizing: border-box;
 
                 .nome{
                     font-size: 14px;
                     font-weight: 500;
                     color: v.$cor-tema;
+
+                    @media (max-width: 600px){
+                        font-size: 10px;
+                    }
                 }
 
                 .dado{
-                    font-size: 26px;
+                    font-size: 22px;
                     font-weight: 600;
                     color: v.$cor-tema;
+                    padding-left: 10px;
+
+                    @media (max-width: 600px){
+                        font-size: 20px;
+                    }
                 }
             }
         }

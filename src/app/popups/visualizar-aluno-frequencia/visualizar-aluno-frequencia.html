@@ -6,8 +6,12 @@
         </button>
     </header>
 
-    <div class="conteudo-popup">
-         @if (matriculaAtual(); as m) {
+    <div class="conteudo-popup" [class.esta-carregando-nao-tem]="carregandoComponente || !matriculaAtual()">
+        @if(carregandoComponente){
+            <app-carregamento></app-carregamento>
+        }
+
+         @else if (matriculaAtual(); as m) {
             <div class="fundo-semetre">
                 <input type="text" class="input-real" disabled [value]="m.idioma + ' ' + m.nivel">
                 <button class="icon-seta" (click)="mostrarSemestre=!mostrarSemestre">
@@ -35,7 +39,7 @@
             </div>
          }
         @else {
-            <p class="nao-tem">Nenhuma matrícula encontrada.</p>
+            <p class="nao-tem">Nenhuma Matrícula encontrada.</p>
         }
     </div>
 

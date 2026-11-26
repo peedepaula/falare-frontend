@@ -12,10 +12,21 @@
     gap: 10px;
     position: relative;
 
+    &.com-botao{
+        @media(max-width: 600px){
+            height: 110px;
+        }
+    }
+
+
     .titlo-card{
         font-size: 12px;
         font-weight: 450;
         color: white;
+
+        @media(max-width: 600px){
+            font-size: 10px;
+        }
     }
 
     .card-dado{
@@ -23,6 +34,11 @@
         font-weight: 550;
         color: white;
         padding-left: 12px;
+        white-space: nowrap;
+
+        @media(max-width: 600px){
+            font-size: 18px;
+        }
     }
 
     .botao-card{
@@ -39,6 +55,7 @@
         bottom: 10px;
         cursor: pointer;
         transition: all ease 0.7s;
+        // margin-top: 200px;
 
         &:hover{
             opacity: 0.7;

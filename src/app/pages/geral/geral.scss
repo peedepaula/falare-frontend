@@ -13,29 +13,37 @@
     overflow-x: hidden;
     gap: 16px;
     background-color: v.$cor-fundo-offwhite;
+
+    @media (max-width: 600px){
+        height: auto;
+        height: 100%;
+    }
 }
 
 .header{ grid-area: header;}
 .nav{ grid-area: nav;}
+.fundo-nav-mobile{display: none;}
 .conteudo {
     grid-area: conteudo;
     background-color: v.$cor-fundo-branco;
     border-radius: 10px;
     padding: 22px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
     min-width: 0;
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    position: relative;
     border: solid 1.5px v.$cor-tema-para-borda-conteudo;
 
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-areas:
-        "cards cards cards"
-        "melhores melhores piores";
-    align-content: start;
-    gap: 12px;
+    @media (max-width: 600px){
+        height: auto;
+        height: 100%;
+    }
 
     .cards {
         grid-area: cards;
@@ -43,15 +51,153 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
         min-width: 0;
+
+        @media (max-width: 600px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            > :last-child {
+                grid-column: 1 / -1;
+            }
+        }
     }
 
-    .melhores {
-        grid-area: melhores;
-        min-width: 0;
+    .area-texto-main{
+        padding: 30px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 42px;
+        width: 100%;
+
+        @media (max-width: 600px) {
+            padding: 16px;
+           
+        }
+
+        .textos{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            
+            .texto-principal{
+                font-size: 32px;
+                font-weight: 550;
+                color: v.$cor-tema;
+            }
+            
+            .texto-secundario{
+                font-size: 14px;
+                font-weight: 450;
+                color: gray;
+            }
+            
+            @media(max-width: 600px){
+                .texto-principal{
+                    font-size: 22px;
+                }
+            }
+        }
+
+        .grid-botoes{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+
+            .botao-do-grid{
+                padding: 18px 32px;
+                border-radius: 10px;
+                border: none;
+                color: white;
+                font-size: 14px;
+                font-weight: 500;
+                width: 100%;
+                background-color: v.$cor-tema;
+                cursor: pointer;
+                transition: all ease 0.4s;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 8px;
+
+                &:hover{
+                    opacity: 0.7;
+                }
+
+                @media(max-width: 600px){
+                    gap: 16px;
+                }
+            }
+
+            .botao-grid-icone{
+                width: 28px;
+                height: 28px;
+
+                @media(max-width: 600px){
+                    width: 24px;
+                    height: 24px; 
+                }
+            }
+
+            @media(max-width: 600px){
+                grid-template-columns: 1fr;   
+            }
+        }
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1280px){
+    .modelo-corpo-painel {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 1fr;
+        grid-template-areas:
+            "header"
+            "conteudo";
+        padding: 8px 12px 12px 12px;
     }
 
-    .piores {
-        grid-area: piores;
-        min-width: 0;
+    .nav{
+        display: none;
+    }
+
+    .fundo-nav-mobile{
+        display: flex;
+        backdrop-filter: blur(4px);
+        width: calc(100% - 24px);
+        height: 100%;
+        background: rgba(0, 0, 0, 0.142);
+        position: absolute;
+        top: 80px;
+        left: 12px;
+        z-index: 999;
+        border-radius: 10px;
+        animation: aparecerPopup 0.5s ease;
+    }
+}
+
+@media(max-width: 600px){
+    .modelo-corpo-painel {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 1fr;
+        grid-template-areas:
+            "header"
+            "conteudo";
+        padding: 8px 12px 12px 12px;
+    }
+
+    .nav{
+        display: none;
+    }
+
+    .fundo-nav-mobile{
+        display: flex;
+        backdrop-filter: blur(4px);
+        width: calc(100% - 24px);
+        height: 100%;
+        background: rgba(0, 0, 0, 0.142);
+        position: absolute;
+        top: 80px;
+        left: 12px;
+        z-index: 999;
+        border-radius: 10px;
+        animation: aparecerPopup 0.5s ease;
     }
 }

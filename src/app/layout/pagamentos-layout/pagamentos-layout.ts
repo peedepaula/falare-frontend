@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angula
 import { UnidadePagamento } from '../unidade-pagamento/unidade-pagamento';
 import { PagamentoService } from '../../core/services/pagamento.service';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../carregamento/carregamento';
 
 @Component({
   selector: 'app-pagamentos-layout',
-  imports: [UnidadePagamento],
+  imports: [UnidadePagamento, Carregamento],
   templateUrl: './pagamentos-layout.html',
   styleUrl: './pagamentos-layout.scss',
 })
@@ -19,6 +20,7 @@ export class PagamentosLayout implements OnInit {
     this.mostrar.emit(pagamento);
   }
 
+  carregandoComponente: boolean = false;
   pagamentos = signal<any[]>([]);
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class PagamentosLayout implements OnInit {
   }
 
   buscarPagamentos(){
+    this.carregandoComponente = true;
     this.PagamentoService.buscarPagamentos().subscribe({
       next: (res) => {
         this.pagamentos.set(res);
@@ -35,6 +38,7 @@ export class PagamentosLayout implements OnInit {
         console.error('Erro ao buscar Pagamentos:', err);
         this.popup.erro('Erro ao tentar buscar Pagamentos.')
       }
-    })
+    });
+    this.carregandoComponente = false;
   }
 }

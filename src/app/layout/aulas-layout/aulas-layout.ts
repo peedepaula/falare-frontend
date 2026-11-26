@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angula
 import { UnidadeAula } from '../unidade-aula/unidade-aula';
 import { AulaService } from '../../core/services/aula.service';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../carregamento/carregamento';
 
 @Component({
   selector: 'app-aulas-layout',
-  imports: [UnidadeAula],
+  imports: [UnidadeAula, Carregamento],
   templateUrl: './aulas-layout.html',
   styleUrl: './aulas-layout.scss',
 })
@@ -19,6 +20,8 @@ export class AulasLayout implements OnInit {
     this.mostrar.emit(aula);
   }
 
+  carregandoComponente: boolean = true;
+
   aulas = signal<any[]>([]);
 
   ngOnInit(): void {
@@ -26,15 +29,19 @@ export class AulasLayout implements OnInit {
   }
 
   carregarAulas() {
+    this.carregandoComponente = true;
     this.AulaService.buscarAulas().subscribe({
       next: (res) => {
         this.aulas.set(res);
         console.log('Aulas', this.aulas());
-      },
-      error: (err) => {
+
+        },
+        error: (err) => {
         console.error('Erro ao buscar aulas:', err);
         this.popup.erro('Erro ao tentar buscar Aulas.')
       }
     });
+
+    this.carregandoComponente = false;
   }
 }

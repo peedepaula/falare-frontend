@@ -36,5 +36,8 @@ export class Pagamentos {
     this.pagamentosLayout()?.buscarPagamentos();
   }
 
-
+  mostrarMenu: boolean = false;
+  trocarManuMobile(menu: boolean){
+    this.mostrarMenu = menu;
+  }
 }

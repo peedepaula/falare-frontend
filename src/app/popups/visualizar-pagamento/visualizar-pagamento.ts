@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, Input, OnInit, Output, signal } from '
 import { PagamentoService } from '../../core/services/pagamento.service';
 import { formatarData } from '../../utils/formatadores';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../../layout/carregamento/carregamento';
 
 @Component({
   selector: 'app-visualizar-pagamento',
-  imports: [],
+  imports: [Carregamento],
   templateUrl: './visualizar-pagamento.html',
   styleUrl: './visualizar-pagamento.scss',
 })
@@ -53,9 +54,12 @@ export class VisualizarPagamento implements OnInit{
     )
   }
 
+  carregandoComponente: boolean = true;
+
   pagamento = signal<any>(null);
 
   buscarPagamentoDetalhe(){
+    this.carregandoComponente = true;
     if(!this.pagamentoSelecionado.id)return;
     this.pagamentoService.buscarPagamento(this.pagamentoSelecionado.id).subscribe({
       next: (res) => {
@@ -66,6 +70,7 @@ export class VisualizarPagamento implements OnInit{
         console.log('Erro ao tentar buscar Pagamento detalhado', err);
         this.popup.erro('Erro ao tentar buscar Pagamento.');
       }
-    })
+    });
+    this.carregandoComponente = false;
   }
 }

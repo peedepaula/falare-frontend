@@ -7,8 +7,12 @@
         </div>
     </div>
 
-    <div class="pagamentos">
-        @if(pagamentos().length > 0){
+    <div class="pagamentos" [class.esta-carregando-nao-tem]="carregandoComponente || pagamentos().length === 0">
+        @if(carregandoComponente){
+            <app-carregamento></app-carregamento>
+        }
+
+        @else if(!carregandoComponente && pagamentos().length > 0){
             @for (pagamento of pagamentos(); track pagamento.id) {
                 <app-unidade-pagamento
                 [pagamento]="pagamento"
@@ -17,8 +21,9 @@
                 </app-unidade-pagamento>
             }
         }
-        @else {
-            <p class="nao-tem">Sem pagamentos</p>
+        
+        @else{
+            <p class="nao-tem">Não tem Pagamentos</p>
         }
         
     </div>

@@ -15,6 +15,14 @@
     padding: 10px 32px;
     box-sizing: border-box;
 
+    @media (min-width: 601px) and (max-width: 1280px){
+        width: 90%;
+    }
+
+    @media(max-width: 600px){
+        width: 90%;
+    }
+
     .header-popup{
         display: flex;
         flex-direction: row;
@@ -29,6 +37,8 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            text-align: center;
+            white-space: nowrap;
         }
 
         .icone-x{
@@ -56,6 +66,12 @@
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: (3, auto);
             gap: 22px;
+
+            @media(max-width: 600px){
+                grid-template-columns: 1fr;
+                overflow-y: auto;
+                max-height: calc(100dvh - 300px);
+            }
         }
 
         .fundo-input{
@@ -71,7 +87,7 @@
 
             .input-nota{
                 width: 200px;
-                height: 30px;
+                height: 45px;
                 border-radius: 10px;
                 border: none;
                 padding: 0 10px;
@@ -83,6 +99,10 @@
                     outline: none;
                     box-shadow: 0 0 0 1px v.$cor-tema;
                 }
+
+                @media(max-width: 600px){
+                    width: 100%;
+                }
             }
 
             .grid-dias{
@@ -91,12 +111,16 @@
                 grid-template-columns: repeat(4, 1fr);
                 gap: 8px;
 
+                @media(max-width: 600px){
+                    width: 100%;
+                }
+
                 .dias{
                     color: v.$cor-tema;
                     border: solid 1px v.$cor-tema;
                     background: none;
                     border-radius: 10px;
-                    height: 30px;
+                    height: 45px;
                     padding: 0 10px;
                     box-sizing: border-box;
                     cursor: pointer;
@@ -123,7 +147,7 @@
                 .input-horario{
                     border: solid 1px v.$cor-tema;
                     width: 100%;
-                    height: 30px;
+                    height: 45px;
                     border-radius: 10px;
                     padding: 0 10px;
                     box-sizing: border-box;
@@ -132,12 +156,16 @@
 
             .fundo-input-real{
                 width: 200px;
-                height: 30px;
+                height: 45px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 position: relative;
                 cursor: pointer;
+
+                @media(max-width: 600px){
+                    width: 100%;
+                }
 
                 .input-nota{
                     width: 100%;

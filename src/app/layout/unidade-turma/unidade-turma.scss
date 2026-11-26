@@ -16,6 +16,7 @@
     cursor: pointer;
     transition: all ease 0.4s;
     border: solid 1px v.$cor-tema-para-borda-conteudo;
+    animation: aparecerPopup 0.6s ease;
 
     &:hover{
         opacity: 0.7;

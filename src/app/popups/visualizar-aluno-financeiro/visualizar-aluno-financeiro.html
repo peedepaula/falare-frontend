@@ -6,7 +6,7 @@
         </button>
     </header>
 
-    <div class="conteudo-popup">
+    <div class="conteudo-popup" [class.esta-carregando-nao-tem]="carregandoComponente">
         @if (dadosFinanceiro(); as f){
             <div class="status">
                 <p class="sessao">Status atual:</p>
@@ -24,6 +24,9 @@
                     }
                 </div>
             </div>
+        }
+        @else{
+            <app-carregamento></app-carregamento>
         }
     </div>
 

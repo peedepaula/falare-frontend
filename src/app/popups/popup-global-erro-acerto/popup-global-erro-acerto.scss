@@ -29,6 +29,14 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       pointer-events: auto;
       animation: entrarESair 4s ease-in-out forwards;
+
+    @media (min-width: 601px) and (max-width: 1280px){
+        width: 90%;
+    }
+
+    @media(max-width: 600px){
+        width: 90%;
+    }
   
       &.erro{
           border: solid 1px v.$cor-vemelho;

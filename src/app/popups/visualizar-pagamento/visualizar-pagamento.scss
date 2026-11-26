@@ -15,6 +15,16 @@
     padding: 10px 32px;
     box-sizing: border-box;
 
+
+    @media (min-width: 601px) and (max-width: 1280px){
+        width: 90%;
+    }
+
+    @media(max-width: 600px){
+        width: 90%;
+        padding-bottom: 70px;
+    }
+
     .header-popup{
         display: flex;
         flex-direction: row;
@@ -29,6 +39,8 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            text-align: center;
+            white-space: nowrap;
         }
 
         .icone-x{
@@ -54,6 +66,10 @@
             align-items: center;
             gap: 32px;
 
+            @media(max-width: 600px){
+                flex-direction: column;
+            }
+
             .img-aluno{
                 width: 165px;
                 height: 165px;
@@ -64,6 +80,10 @@
                 background-color: v.$cor-fundo-offwhite;
                 border: solid 1px v.$cor-tema-para-borda-conteudo;
                 flex-shrink: 0;
+
+                @media(max-width: 600px){
+                    display: none;
+                }
 
                 .icon-usuario{
                     width: 18px;
@@ -77,24 +97,48 @@
                 flex-direction: column;
                 gap: 8px;
 
+                @media(max-width: 600px){
+                    align-items: start;
+                    width: 100%;
+                    margin-top: 16px;
+                }
+
                 .nome-aluno{
-                    font-size: 15px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 22px;
                     font-weight: 500;
                     color: v.$cor-tema;
                     padding-bottom: 8px;
+
+                    .icone-do-input{
+                        width: 26px;
+                        height: 26px;
+                        color: v.$cor-tema;
+                    }
                 }
 
                 .nome{
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 5px;
-                    font-weight: 500;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 450;
                     color: v.$cor-tema;
+                    opacity: 0.9;
 
                     .dado{
                         font-size: 13px;
                         font-weight: 400;
+                        color: v.$cor-tema;
+                    }
+
+                    .icone-do-input{
+                        width: 18px;
+                        height: 18px;
                         color: v.$cor-tema;
                     }
                 }
@@ -102,27 +146,46 @@
         }
 
         .sessao-pagamentos{
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            place-items: center;
             gap: 16px;
-            margin-top: 32px;
+            margin-top: 42px;
             overflow-y: auto;
+            overflow-x: hidden;
             max-height: calc(100vh - 410px);
+
+            @media(max-width: 600px){
+                grid-template-columns: 1fr;
+            }
 
             .nome-dado{
                 display: flex;
                 flex-direction: column;
                 gap: 6px;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px 16px;
+                border-radius: 10px;
+                border: solid 1px v.$cor-tema;
 
                 .nome{
                     font-size: 13px;
                     color: v.$cor-tema;
+
+                    @media(max-width: 600px){
+                        font-size: 10px;
+                    }
                 }
 
                 .dado{
                     font-size: 22px;
                     color: v.$cor-tema;
                     font-weight: 500;
+
+                    @media(max-width: 600px){
+                        font-size: 18px;
+                    }
                 }
             }
         }

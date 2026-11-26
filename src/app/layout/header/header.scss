@@ -23,15 +23,39 @@
         cursor: pointer;
     }
 
-    .menu-icon{
-        height: 25px;
-        width: 25px;
-        color: white;
-        background: none;
-        cursor: pointer;
-        border: none;
+    .icones-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 22px;
         margin-left: auto;
+
+        .icone-menu-header-para-mobile{
+            width: 18px;
+            height: 18px;
+            color: white;
+            display: none;
+            animation: aparecerPopup 0.4s ease;
+
+            @media (min-width: 601px) and (max-width: 1280px){
+                display: flex;
+            }
+
+            @media(max-width: 600px){
+                display: flex;
+            }
+        }
+
+        .menu-icon{
+            height: 25px;
+            width: 25px;
+            color: white;
+            background: none;
+            cursor: pointer;
+            border: none;
+        }
     }
+
 
     .menu-header{
         position: fixed;
@@ -72,5 +96,17 @@
         width: 18px;
         height: 18px;
         margin-left: auto;
+    }
+    
+    @media (min-width: 601px) and (max-width: 1280px){
+        .menu-header{
+            display: none;
+        }
+    }
+    
+    @media(max-width: 600px){
+        .menu-header{
+            display: none;
+        }
     }
 }

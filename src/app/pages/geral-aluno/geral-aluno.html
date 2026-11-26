@@ -1,6 +1,11 @@
 <main class="modelo-corpo-painel">
-    <app-header class="header"></app-header>
+    <app-header class="header" (mostrarMenuMobileEmit)="trocarManuMobile($event)"></app-header>
     <app-nav class="nav"></app-nav>
+    @if(mostrarMenu){
+        <div class="fundo-nav-mobile">
+            <app-nav class="nav-mobile"></app-nav>
+        </div>
+    }
     <section class="conteudo">
         <section class="cards">
             <app-card 
@@ -43,5 +48,21 @@
                 </app-visualizar-aluno-financeiro>
             </section>
         }
+
+
+
+        <div class="area-certificado">
+            <div class="textos">
+                @if (statusAluno) {
+                    <h3 class="texto-principal">Parabéns pela conquista, {{ usuario()?.nome }}!</h3>
+                    <p class="texto-secundario">Você concluiu o curso com sucesso. Seu certificado oficial já está pronto para ser emitido.</p>
+                }
+                @else {
+                    <h3 class="texto-principal">Continue firme, {{ usuario()?.nome }}!</h3>
+                    <p class="texto-secundario">Seu certificado será liberado aqui assim que você concluir todas as aulas.</p>
+                }
+            </div>
+            <button class="botao-emitir-certificado" [class.inativo]="!statusAluno">Emitir certificado</button>
+        </div>
     </section>
 </main>

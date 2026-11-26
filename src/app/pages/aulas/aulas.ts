@@ -34,4 +34,8 @@ export class Aulas {
     this.aulasLayout()?.carregarAulas();
   }
 
+  mostrarMenu: boolean = false;
+  trocarManuMobile(menu: boolean){
+    this.mostrarMenu = menu;
+  }
 }

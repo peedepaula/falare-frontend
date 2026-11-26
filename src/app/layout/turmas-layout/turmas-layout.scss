@@ -76,5 +76,14 @@
             background-color: white;
             flex-shrink: 0;
         }
+
+        @media (min-width: 601px) and (max-width: 1280px){
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media(max-width: 600px){
+            display: flex;
+            flex-direction: column;
+        }
     }
 }

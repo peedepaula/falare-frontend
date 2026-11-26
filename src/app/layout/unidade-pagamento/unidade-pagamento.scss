@@ -16,6 +16,7 @@
     cursor: pointer;
     transition: all ease 0.4s;
     border: solid 1px v.$cor-tema-para-borda-conteudo;
+    animation: aparecerPopup 0.6s ease;
 
     &:hover{
         opacity: 0.7;
@@ -26,6 +27,10 @@
         flex-direction: row;
         align-items: center;
         gap: 16px;
+
+        @media (max-width: 600px){
+            gap: 8px;
+        }
 
         .imagem-aluno{
             display: flex;
@@ -57,10 +62,18 @@
             gap: 8px;
             align-items: center;
 
+            @media (max-width: 600px){
+              flex-direction: column;
+              gap: 1px;
+              align-items: start;
+
+            }
+
             .nome-aluno{
                 font-size: 13px;
                 font-weight: 450;
                 color: v.$cor-tema;
+                text-align: start;
             }
 
             .status{
@@ -69,6 +82,10 @@
                 color: white;
                 background-color: green;
                 font-size: 10px;
+
+                @media (max-width: 600px){
+                    font-size: 8px;
+                }
             }
         }
 
@@ -79,6 +96,10 @@
         font-weight: 600;
         color: v.$cor-tema;
         margin-left: auto;
+
+        @media (max-width: 600px){
+            font-size: 12px;
+        }
     }
 
 

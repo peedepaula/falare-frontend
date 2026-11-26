@@ -11,8 +11,12 @@
         </div>
     </div>
 
-    <div class="matriculas">
-        @if(matriculas().length > 0){
+    <div class="matriculas" [class.esta-carregando-nao-tem]="carregandoComponente || matriculas().length === 0">
+        @if(carregandoComponente){
+            <app-carregamento></app-carregamento>
+        }
+
+        @else if(!carregandoComponente && matriculas().length > 0){
             @for (matricula of matriculas(); track matricula.id) {
                 <app-unidade-matricula
                 [matricula]="matricula"
@@ -20,8 +24,9 @@
                 ></app-unidade-matricula>
             }
         }
+
         @else{
-            <p class="nao-tem">Sem mátriculas</p>
+            <p class="nao-tem">Não tem Matrículas</p>
         }
         
     </div>

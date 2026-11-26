@@ -11,12 +11,20 @@
         </div>
     </div>
 
-    <div class="turmas">
-        @for (turma of turmas(); track turma.id){
-            <app-unidade-turma
-            [turma]="turma"
-            (click)="mostrarPopup(turma)"
-            ></app-unidade-turma>
+    <div class="turmas" [class.esta-carregando-nao-tem]="carregandoComponente || turmas().length === 0">
+        @if(carregandoComponente){
+            <app-carregamento></app-carregamento>
+        }
+        @else if (!carregandoComponente && turmas().length > 0) {
+            @for (turma of turmas(); track turma.id){
+                <app-unidade-turma
+                [turma]="turma"
+                (click)="mostrarPopup(turma)"
+                ></app-unidade-turma>
+            }
+        }
+        @else{
+            <p class="nao-tem">Não tem Turmas</p>
         }
         
     </div>

@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Header } from '../../layout/header/header';
 import { Nav } from '../../layout/nav/nav';
 import { Card } from '../../layout/card/card';
-import { MelhoresAlunos } from '../../layout/melhores-alunos/melhores-alunos';
-import { PioresAlunos } from '../../layout/piores-alunos/piores-alunos';
-import { VisualizarAluno } from '../../popups/visualizar-aluno/visualizar-aluno';
+import { AuthService } from '../../core/services/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-geral',
-  imports: [Header, Nav, Card, MelhoresAlunos, PioresAlunos, VisualizarAluno],
+  imports: [Header, Nav, Card, RouterLink],
   templateUrl: './geral.html',
   styleUrl: './geral.scss',
 })
 export class Geral {
-  mostrarVisualizarAluno: boolean = false;
-
-  trocarVisualizarAluno(){
-    this.mostrarVisualizarAluno = !this.mostrarVisualizarAluno;
+  auth = inject(AuthService);
+  usuario = this.auth.usuario;
+  
+  tipoUsuario = localStorage.getItem('tipoUsuario')
+  
+  mostrarMenu: boolean = false;
+  trocarManuMobile(menu: boolean){
+    this.mostrarMenu = menu;
   }
 }

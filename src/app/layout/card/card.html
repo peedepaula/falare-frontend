@@ -1,4 +1,4 @@
-<section class="card-corpo">
+<section class="card-corpo" [class.com-botao]="botaoAtivo()">
     <p class="titlo-card">{{ nomeCampo() }}:</p>
     <h4 class="card-dado">{{ dadoCampo() }}</h4>
     @if(botaoAtivo()){

@@ -21,17 +21,16 @@
                     <p class="texto-input">Senha:</p>
                     <input type="password" name="senha" class="input-real" placeholder="Digite sua Senha..."
                            [(ngModel)]="senha" autocomplete="current-password">
-                    <p class="detalhe">Esqueceu a senha? <span class="pode-clicar">Clique aqui para trocar a senha.</span></p>
+                    @if(typeUser !== 'secretaria'){
+                        <p class="detalhe">Esqueceu a senha?<span class="pode-clicar">Entre em contato com a Secretaria para redefini-la.</span></p>
+                    }
+                    @else {
+                        <p class="detalhe">Este login é apenas para usuários da Secretaria.<span class="pode-clicar">Para entra como professor é necessário que selecionar a opção de Professor.</span></p>
+                    }
                 </div>
-
-                @if (erro) {
-                    <p class="erro">{{ erro }}</p>
-                }
             </div>
 
-            <button type="submit" class="botao-entrar" [disabled]="carregando">
-                {{ carregando ? 'Entrando...' : 'Entrar' }}
-            </button>
+            <button type="submit" class="botao-entrar">Entrar</button>
         </form>
     </section>
 </main>

@@ -11,8 +11,12 @@
         </div>
     </div>
 
-    <div class="professores">
-        @if(professores().length > 0){
+    <div class="professores" [class.esta-carregando-nao-tem]="carregandoComponente || professores().length === 0">
+        @if(carregandoComponente){
+            <app-carregamento></app-carregamento>
+        }
+
+        @else if(!carregandoComponente && professores().length > 0){
             @for (professor of professores(); track professor.id) {
                 <app-unidade-professor
                 [professor]="professor"
@@ -20,8 +24,9 @@
                 ></app-unidade-professor>
             }
         }
+
         @else{
-            <p class="nao-tem">Sem Professores</p>
+            <p class="nao-tem">Não tem Professores</p>
         }
         
     </div>

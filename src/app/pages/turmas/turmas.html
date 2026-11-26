@@ -1,6 +1,11 @@
 <main class="modelo-corpo-painel">
-    <app-header class="header"></app-header>
+    <app-header class="header" (mostrarMenuMobileEmit)="trocarManuMobile($event)"></app-header>
     <app-nav class="nav"></app-nav>
+    @if(mostrarMenu){
+        <div class="fundo-nav-mobile">
+            <app-nav class="nav-mobile"></app-nav>
+        </div>
+    }
     <section class="conteudo">
         <section class="cards">
             <app-card

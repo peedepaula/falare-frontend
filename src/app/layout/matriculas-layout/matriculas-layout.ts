@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angula
 import { UnidadeMatricula } from '../unidade-matricula/unidade-matricula';
 import { MatriculaService } from '../../core/services/matricula.service';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../carregamento/carregamento';
 
 @Component({
   selector: 'app-matriculas-layout',
-  imports: [UnidadeMatricula],
+  imports: [UnidadeMatricula, Carregamento],
   templateUrl: './matriculas-layout.html',
   styleUrl: './matriculas-layout.scss',
 })
@@ -19,6 +20,7 @@ export class MatriculasLayout implements OnInit {
     this.mostrar.emit(matricula);
   }
 
+  carregandoComponente: boolean = true;
   matriculas = signal<any[]>([]);
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class MatriculasLayout implements OnInit {
   }
 
   buscarMatriculas() {
+    this.carregandoComponente = true;
     this.MatriculaService.buscarMatriculas().subscribe({
       next: (res) => {
         this.matriculas.set(res);
@@ -35,6 +38,7 @@ export class MatriculasLayout implements OnInit {
         console.error('Erro ao buscar Matriculas:', err);
         this.popup.erro('Erro ao tentar buscar Matrículas.')
       }
-    })
+    });
+    this.carregandoComponente = false;
   }
 }

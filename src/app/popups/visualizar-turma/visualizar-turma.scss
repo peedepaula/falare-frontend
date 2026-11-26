@@ -15,6 +15,14 @@
     padding: 10px 32px;
     box-sizing: border-box;
 
+    @media (min-width: 601px) and (max-width: 1280px){
+        width: 90%;
+    }
+
+    @media(max-width: 600px){
+        width: 90%;
+    }
+
     .header-popup{
         display: flex;
         flex-direction: row;
@@ -29,6 +37,8 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            text-align: center;
+            white-space: nowrap;
         }
 
         .icone-x{
@@ -62,14 +72,18 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
 
+                @media(max-width: 600px){
+                    grid-template-columns: 1fr;
+                }
+
                 .nome{
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 5px;
+                    gap: 8px;
                     font-size: 14px;
                     font-weight: 500;                
-                    padding: 12px 12px;
+                    padding: 16px 12px;
                     border-radius: 5px;
                     background-color: v.$cor-tema;
                     color: white;
@@ -77,6 +91,12 @@
                     .dado{
                         font-size: 13px;
                         font-weight: 400;
+                    }
+
+                    .icon-para-nome{
+                        width: 18px;
+                        height: 18px;
+                        color: white;
                     }
                 }
             }
@@ -96,6 +116,10 @@
                 flex-direction: row;
                 align-items: center;
                 margin: auto;
+
+                @media(max-width: 600px){
+                    width: 100%;
+                }
             }
 
             .pesquisa-input{
@@ -123,10 +147,15 @@
                 gap: 8px;
                 box-sizing: border-box;
                 padding: 16px 22px;
+                min-height: 90px;
                 max-height: 400px;
                 max-height: calc(100vh - 410px);
                 overflow-x: auto;
                 margin-bottom: 55px;
+
+                @media(max-width: 600px){
+                    padding: 16px 0;
+                }
             }
         }
     }

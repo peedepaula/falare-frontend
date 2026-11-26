@@ -3,10 +3,11 @@ import { AlunoService } from '../../core/services/aluno.service';
 import { MatriculaService } from '../../core/services/matricula.service';
 import { FormsModule } from '@angular/forms';
 import { PopupService } from '../../core/services/popup.service';
+import { Carregamento } from '../../layout/carregamento/carregamento';
 
 @Component({
   selector: 'app-visualizar-aluno',
-  imports: [FormsModule],
+  imports: [FormsModule, Carregamento],
   templateUrl: './visualizar-aluno.html',
   styleUrl: './visualizar-aluno.scss',
 })

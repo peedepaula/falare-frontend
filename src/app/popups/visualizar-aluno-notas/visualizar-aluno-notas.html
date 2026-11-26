@@ -6,7 +6,7 @@
         </button>
     </header>
 
-    <div class="conteudo-popup">
+    <div class="conteudo-popup" [class.esta-carregando-nao-tem]="carregandoComponente">
          @if (matriculaAtual(); as m){
              <div class="fundo-semetre">
                  <input type="text" class="input-real" disabled [value]="m.idioma + ' ' + m.nivel">
@@ -45,8 +45,11 @@
                      <h4 class="dado">{{ m.situacao }}!</h4>
                  </div>
              </div>
-
          }
+
+        @else{
+            <app-carregamento></app-carregamento>
+        }
     </div>
 
 </section>

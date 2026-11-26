@@ -3,6 +3,7 @@ import { Header } from '../../layout/header/header';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, TipoUsuario } from '../../core/services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { PopupService } from '../../core/services/popup.service';
 
 @Component({
   selector: 'app-entrar',
@@ -11,6 +12,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './entrar.scss',
 })
 export class Entrar implements OnInit {
+  private popup = inject(PopupService);
+
   private router = inject(Router);
   private auth = inject(AuthService);
 
@@ -44,12 +47,15 @@ export class Entrar implements OnInit {
         this.carregando = false;
         localStorage.setItem('tipoUsuario', this.getTipoUsuario().toString());
         this.router.navigate([this.isAdmin ? '/geral' : '/geral/aluno']);
+        this.popup.acerto('Login realizado.')
       },
       error: (err) => {
         this.carregando = false;
         this.erro = err.status === 401
           ? 'E-mail ou senha inválidos.'
           : 'Não foi possível entrar. Tente novamente.';
+
+        this.popup.erro('Erro ao tentar fazer Login.')
       },
     });
   }
